@@ -8,7 +8,7 @@ import { requestPath, services } from "@/content/systems";
 
 export const metadata: Metadata = {
   title: "Homelab",
-  description: "One PC in a closet: Proxmox, self-hosted services, a managed network, and this website.",
+  description: "One PC in a closet: Proxmox, self-hosted services, and a managed network.",
 };
 
 export default function HomelabPage() {
@@ -20,7 +20,7 @@ export default function HomelabPage() {
       <header className="page__head">
         <Roundel id="H" color={lab.color} size="lg" />
         <h1 className="page__title">Homelab</h1>
-        <p className="page__lede">One PC in a closet runs Proxmox, my self-hosted services, and this website.</p>
+        <p className="page__lede">One PC in a closet runs Proxmox and my self-hosted services.</p>
       </header>
       <StripMap
         stops={[{ name: "Proxmox", note: "The host" }, ...services.map((s) => ({ name: s.name }))]}
@@ -56,8 +56,8 @@ export default function HomelabPage() {
           <Roundel id="S" color={site.color} /> This site
         </h2>
         <p>
-          Next.js and TypeScript, exported as plain static files and served from the box. Traffic arrives through a CDN
-          tunnel, so the home IP never appears in DNS.
+          Next.js and TypeScript, exported as plain static files and served by Cloudflare Workers. The site never runs
+          on the box, so visiting it opens no path into the home network.
         </p>
         <StripMap stops={requestPath} color={site.color} label="How this page reaches you" />
       </section>

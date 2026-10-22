@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "bsumatra-dev",
+  "compatibility_date": "2026-10-19",
+  "workers_dev": true,
+  "routes": [
+    { "pattern": "bsumatra.dev", "custom_domain": true },
+    { "pattern": "www.bsumatra.dev", "custom_domain": true }
+  ],
+  // Static export only: `npm run build` writes out/, Workers serves it as assets.
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  }
+}

@@ -81,15 +81,15 @@ export default function Home() {
       </section>
 
       <section id="homelab" className="section">
-        <h2 className="section__title">Served from my homelab</h2>
+        <h2 className="section__title">A homelab, and the edge</h2>
         <p className="section__lede">
-          One PC in a closet runs Proxmox, my self-hosted services, and the page you&apos;re reading. This is the route it
-          took to reach you.
+          One PC in a closet runs Proxmox and my self-hosted services. This site stays off it: static files on
+          Cloudflare&apos;s edge, so visitors never touch the home network. This is the route it took to reach you.
         </p>
         <StripMap stops={requestPath} color={site.color} label="How this page reaches you" />
         <div className="board" style={{ "--line": lab.color } as CSSProperties}>
           <h3 className="board__title">
-            <Roundel id="H" color={lab.color} /> Also running on the box
+            <Roundel id="H" color={lab.color} /> Running on the box
           </h3>
           <dl className="board__rows">
             {services.map((s) => (

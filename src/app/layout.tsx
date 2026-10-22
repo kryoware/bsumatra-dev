@@ -37,7 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <footer className="footer">
           <p>© 2026 {owner.name}</p>
-          <p>Built with Next.js, served from a Proxmox box in a closet.</p>
+          <p>Built with Next.js, served by Cloudflare Workers.</p>
           <p className="footer__links">
             <a href={LINKEDIN}>LinkedIn</a>
             <a href={GITHUB}>GitHub</a>

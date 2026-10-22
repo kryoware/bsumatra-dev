@@ -17,10 +17,7 @@ export const notiflyStack: Stop[] = [
 
 export const requestPath: Stop[] = [
   { name: "This site", note: "Next.js, exported as static files" },
-  { name: "Proxmox", note: "The PC in the closet" },
-  { name: "Omada", note: "Managed home network" },
-  { name: "OpenMPTCProuter", note: "Multiple internet links, bonded" },
-  { name: "CDN tunnel", note: "Keeps the home IP private" },
+  { name: "Cloudflare Workers", note: "Serves those files from the edge" },
   { name: "You", note: "Reading this" },
 ];
 

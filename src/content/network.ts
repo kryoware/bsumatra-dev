@@ -23,7 +23,7 @@ export type Station = {
 };
 
 // Hand-laid octilinear geometry in a 1200 x 680 viewBox. The title panel
-// (x 32-520, y 32-340) and the legend (x 952-1176, y 372-656) sit over empty
+// (x 32-520, y 32-340) and the legend (x 960-1180, y 270-656) sit over empty
 // map regions, so no track or label may enter those boxes.
 export const VIEWBOX = { w: 1200, h: 680 };
 
@@ -87,9 +87,9 @@ export const lines: Line[] = [
     kind: "Next.js",
     color: "#94602a",
     href: "/homelab/#this-site",
-    stations: ["nextjs", "typescript", "proxmox", "omada", "openmptcprouter", "here"],
-    path: [[776, 144], [776, 280], [808, 312], [1000, 312], [1040, 272], [1040, 80]],
-    badge: [1040, 42],
+    stations: ["typescript", "nextjs", "cloudflare", "here"],
+    path: [[776, 232], [776, 120], [808, 88], [1120, 88]],
+    badge: [1158, 88],
   },
 ];
 
@@ -103,10 +103,9 @@ export const stations: Station[] = [
   { id: "postgresql", label: "PostgreSQL", x: 680, y: 472, label_at: [680, 503], anchor: "middle", marker: "ring" },
   { id: "php", label: "PHP", x: 880, y: 392, label_at: [862, 421], anchor: "end", marker: "ring" },
   { id: "mysql", label: "MySQL", x: 880, y: 472, label_at: [862, 477], anchor: "end", marker: "dot" },
-  { id: "proxmox", label: "Proxmox", x: 920, y: 312, label_at: [920, 343], anchor: "middle", marker: "ring" },
-  { id: "omada", label: "Omada", x: 984, y: 312, label_at: [984, 297], anchor: "middle", marker: "dot" },
-  { id: "openmptcprouter", label: "OpenMPTCProuter", x: 1040, y: 200, label_at: [1058, 205], anchor: "start", marker: "dot" },
-  { id: "here", label: "You are here", x: 1040, y: 80, label_at: [1060, 85], anchor: "start", marker: "here" },
+  { id: "proxmox", label: "Proxmox", x: 920, y: 312, label_at: [920, 343], anchor: "middle", marker: "dot" },
+  { id: "cloudflare", label: "Cloudflare", x: 1040, y: 88, label_at: [1040, 71], anchor: "middle", marker: "dot" },
+  { id: "here", label: "You are here", x: 1120, y: 88, label_at: [1120, 117], anchor: "middle", marker: "here" },
   { id: "immich", label: "Immich", x: 920, y: 248, label_at: [938, 253], anchor: "start", marker: "dot" },
   { id: "n8n", label: "n8n", x: 920, y: 184, label_at: [938, 189], anchor: "start", marker: "dot" },
   { id: "beszel", label: "Beszel", x: 920, y: 120, label_at: [938, 125], anchor: "start", marker: "dot" },

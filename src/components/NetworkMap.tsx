@@ -26,16 +26,16 @@ function runLine(root: Element, line: Line, i: number): Animation[] {
   const train = root.querySelector(`[data-train="${line.id}"]`);
   if (!track || !train) return [];
   const total = track.getTotalLength();
+  const samples = Array.from({ length: Math.floor(total) + 1 }, (_, l) => track.getPointAtLength(l));
   const stops = line.stations
     .map((id) => {
       const s = stationById(id);
       let at = 0;
       let best = Infinity;
-      for (let l = 0; l <= total; l++) {
-        const p = track.getPointAtLength(l);
+      samples.forEach((p, l) => {
         const d = Math.hypot(p.x - s.x, p.y - s.y);
         if (d < best) [best, at] = [d, l];
-      }
+      });
       return { id, at };
     })
     .sort((a, b) => a.at - b.at);
@@ -94,6 +94,8 @@ export function NetworkMap({ title }: { title: ReactNode }) {
     let wasPannable = false;
     const observer = new ResizeObserver(() => {
       const pannable = el.scrollWidth > el.clientWidth;
+      // Only a pannable plate earns a tab stop; on desktop the legend carries the keyboard path.
+      el.tabIndex = pannable ? 0 : -1;
       if (pannable && !wasPannable) el.scrollLeft = (el.scrollWidth - el.clientWidth) * 0.62;
       wasPannable = pannable;
     });
@@ -251,10 +253,12 @@ export function NetworkMap({ title }: { title: ReactNode }) {
         <div className="hero__title">{title}</div>
 
         <nav className="legend" aria-label="Lines">
-          <h2 className="legend__head">Lines</h2>
-          <button className="button button--sm legend__motion" type="button" onClick={() => setTrainsPaused(!trainsPaused)}>
-            {trainsPaused ? "Resume trains" : "Pause trains"}
-          </button>
+          <div className="legend__top">
+            <h2 className="legend__head">Lines</h2>
+            <button className="legend__motion" type="button" onClick={() => setTrainsPaused(!trainsPaused)}>
+              {trainsPaused ? "Resume trains" : "Pause trains"}
+            </button>
+          </div>
           <ul className="legend__list">
             {lines.map((line) => (
               <li key={line.id}>
