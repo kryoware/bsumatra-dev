@@ -1,0 +1,167 @@
+{
+  "title": "Choose the visual world",
+  "question": "Fresh hand. The roll assigned the Coffee Lot Label. Keep it, take an alternate, or re-roll again.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Coffee Lot Label",
+      "kicker": "THE ROLL",
+      "lineage": "third-wave specialty roaster bags, lot labels, and SCA cupping forms",
+      "thesis": "Each build is labelled like a specialty coffee lot; NDA work is cupped blind, with the origin withheld and judged on what is in the cup.",
+      "palette": ["#f3f4f2", "#17171a", "#2f6f5e", "#f2c14e", "#e94b2f"],
+      "materials": ["flat matte bag colors, one per lot", "die-cut paper labels with rubber-stamped dates", "cupping-form grids"],
+      "viewport": "One large house label: name as roaster, 'senior full stack, roasting since 2017', origin Philippines (remote), stack as tasting notes, and the Email action as the label's order line.",
+      "risk": "One step from the 'turns coffee into code' cliché, and can make the hobby lead the engineer; bags must stay flat and saturated or they drift into beige craft.",
+      "raised": [
+        { "from": "challenger-raku", "raise": "One hot color, one job: vermilion marks only the Email action and the live 'open to work' state." },
+        { "from": "challenger-plankton", "raise": "Calm at rest: the page holds still until touched, and motion only answers the visitor." },
+        { "from": "challenger-step-row", "raise": "Now is always marked: one current-roast line says what is live (available, building Notifly)." },
+        { "from": "challenger-shader-portal", "raise": "Real web technique: moving from lot to lot uses genuine view transitions, not a static imitation." },
+        { "from": "challenger-linocut", "raise": "One claim per label: every lot carries exactly one headline claim." }
+      ],
+      "wireframe": {
+        "cols": 12, "rows": 10,
+        "regions": [
+          { "label": "roaster nav strip", "x": 0, "y": 0, "w": 12, "h": 1 },
+          { "label": "house label: name, role, origin, notes", "x": 1, "y": 1, "w": 7, "h": 7, "accent": true },
+          { "label": "order line: Email", "x": 1, "y": 8, "w": 7, "h": 1, "accent": true },
+          { "label": "current roast + photo", "x": 8, "y": 1, "w": 4, "h": 8 },
+          { "label": "cupping table: lots below", "x": 0, "y": 9, "w": 12, "h": 1 }
+        ]
+      }
+    },
+    {
+      "id": "model-pick",
+      "label": "Transit Diagram",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "Manila LRT/MRT and Tokyo Metro route diagrams",
+      "thesis": "The stack as a rail network: the React and Vue lines interchange at TypeScript, and every build is a station you can alight at.",
+      "palette": ["#f5f6f4", "#1b1c1f", "#00a3e0", "#e4002b", "#7fba00", "#f6a800"],
+      "materials": ["line diagram on white", "station roundels", "platform signage"],
+      "viewport": "The network fills the first viewport, with the name set as the system's title and Email as the terminus.",
+      "risk": "The skills subway map is a familiar developer-portfolio trope, so it needs real routing to avoid looking like everyone's.",
+      "wireframe": {
+        "cols": 12, "rows": 10,
+        "regions": [
+          { "label": "system title: name + role", "x": 0, "y": 0, "w": 6, "h": 2, "accent": true },
+          { "label": "network: stack lines + build stations", "x": 0, "y": 2, "w": 12, "h": 7 },
+          { "label": "terminus: Email", "x": 9, "y": 8, "w": 3, "h": 2, "accent": true }
+        ]
+      }
+    },
+    {
+      "id": "challenger-warm-app",
+      "label": "Warm Consumer App Surface",
+      "verdict": "competitive",
+      "lineage": "friendly consumer-app design canon",
+      "thesis": "The portfolio as a calm, friendly app: soft cards, plain words, and one action color only where you can act.",
+      "palette": ["#fff4e6", "#ffffff", "#2b241f", "#ff6a3d"],
+      "materials": ["soft-cornered cards", "warm tinted ground"],
+      "viewport": "A greeting card with name and role, the Email button as the only bright color, and cards for each build below.",
+      "case": "Holds product clarity (actions are unmistakable) but loses audience identification: it is the generic template you ruled out.",
+      "risk": "Lands on the 'generic dev template' you said would feel wrong.",
+      "board": "https://impeccable.style/worlds/cards/digital-design-canon-warm-consumer-app-surface.webp",
+      "hero": "https://impeccable.style/worlds/cards/digital-design-canon-warm-consumer-app-surface-hero.webp",
+      "wireframe": {
+        "cols": 12, "rows": 10,
+        "regions": [
+          { "label": "greeting card + Email", "x": 0, "y": 0, "w": 12, "h": 4, "accent": true },
+          { "label": "build card", "x": 0, "y": 4, "w": 6, "h": 3 },
+          { "label": "build card", "x": 6, "y": 4, "w": 6, "h": 3 },
+          { "label": "build card", "x": 0, "y": 7, "w": 12, "h": 3 }
+        ]
+      }
+    },
+    {
+      "id": "challenger-raku",
+      "label": "Raku Smoke Flash",
+      "verdict": "declined",
+      "lineage": "raku ceramic firing",
+      "thesis": "Builds fired in smoke, cracked glaze on soot.",
+      "palette": ["#141210", "#d9dbd8", "#ff7a1a"],
+      "materials": ["carbonized clay", "crackled glaze"],
+      "viewport": "A soot-black vessel with one ember-hot region.",
+      "case": "Loses both axes: no tie to this audience or the engineering case.",
+      "kept": "Ember reserved for the live state.",
+      "risk": "Unrelated world.",
+      "hero": "https://impeccable.style/worlds/cards/clay-ceramics-fracture-raku-smoke-flash-hero.webp"
+    },
+    {
+      "id": "challenger-plankton",
+      "label": "Bioluminescent Wake",
+      "verdict": "declined",
+      "lineage": "night-sea bioluminescence",
+      "thesis": "Pointer trails light up a black field.",
+      "palette": ["#05070d", "#1e6bff", "#5ff2ff"],
+      "materials": ["black water", "particle light"],
+      "viewport": "A dark field the cursor paints in blue light.",
+      "case": "Loses both axes: it is the neon-on-black look you called hacker cosplay.",
+      "kept": "Calm at rest.",
+      "risk": "Neon on black.",
+      "hero": "https://impeccable.style/worlds/cards/reefs-bioluminescent-nocturnal-plankton-wake-stars-hero.webp"
+    },
+    {
+      "id": "challenger-step-row",
+      "label": "Drum Machine Step Row",
+      "verdict": "declined",
+      "lineage": "early-80s rhythm machines",
+      "thesis": "Career years as sixteen step keys under a chase light.",
+      "palette": ["#2a2a2c", "#e8412c", "#f39a1e", "#f4d03f", "#f2f2ee"],
+      "materials": ["charcoal panel", "candy step keys", "LED segments"],
+      "viewport": "A sixteen-step row with builds armed as lit keys.",
+      "case": "Loses both axes: an instrument toy that hides the hiring case.",
+      "kept": "Now is always marked.",
+      "risk": "Toy over substance.",
+      "hero": "https://impeccable.style/worlds/cards/signals-instruments-drum-machine-step-row-hero.webp"
+    },
+    {
+      "id": "challenger-shader-portal",
+      "label": "WebGL Shader Portal",
+      "verdict": "declined",
+      "lineage": "experiential studio sites",
+      "thesis": "A living shader field with thin type floating over it.",
+      "palette": ["#0d0a1f", "#ff3d7f"],
+      "materials": ["fragment shader", "film grain"],
+      "viewport": "A full-screen shader behind a percentage loader.",
+      "case": "Loses both axes: it hides the offer behind a loader and claims a WebGL specialty the owner does not.",
+      "kept": "Real route transitions.",
+      "risk": "Style over offer.",
+      "hero": "https://impeccable.style/worlds/cards/webgl-shader-portal-hero.webp"
+    },
+    {
+      "id": "challenger-linocut",
+      "label": "Linocut Broadside",
+      "verdict": "declined",
+      "lineage": "Taller de Gráfica Popular prints",
+      "thesis": "Each build carved as one demand on newsprint.",
+      "palette": ["#e9dcc0", "#121212"],
+      "materials": ["black relief ink", "manila newsprint"],
+      "viewport": "A monumental gouged figure over carved lettering.",
+      "case": "Loses both axes: protest-print voice does not fit a hiring portfolio.",
+      "kept": "One claim per sheet.",
+      "risk": "Wrong voice.",
+      "hero": "https://impeccable.style/worlds/cards/posters-covers-sleeves-taller-grafica-linocut-hero.webp"
+    }
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "buildPath": { "value": "code" },
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "The senior developer portfolio as the category ships it, executed impeccably.",
+    "palette": ["#0c0e12", "#e6e8ec", "#3b82f6"],
+    "materials": ["clean grid", "screenshots and photography"],
+    "viewport": "Name and role headline, short intro, Email button, selected work below.",
+    "risk": "Indistinguishable from every other dev portfolio by design.",
+    "wireframe": {
+      "cols": 12, "rows": 10,
+      "regions": [
+        { "label": "nav", "x": 0, "y": 0, "w": 12, "h": 1 },
+        { "label": "name + role + Email", "x": 0, "y": 2, "w": 7, "h": 4, "accent": true },
+        { "label": "portrait", "x": 8, "y": 2, "w": 4, "h": 4 },
+        { "label": "selected work", "x": 0, "y": 7, "w": 12, "h": 3 }
+      ]
+    }
+  },
+  "steer": true
+}

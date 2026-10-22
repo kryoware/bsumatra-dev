@@ -1,0 +1,375 @@
+{
+  "title": "Choose the visual world",
+  "question": "The roll assigned the Hobby Magazine Build Report. Keep it, take an alternate, or re-roll.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Hobby Magazine Build Report",
+      "kicker": "THE ROLL",
+      "lineage": "Japanese model-kit magazines (Hobby Japan, Model Graphix, Dengeki Hobby) and their build-report features",
+      "thesis": "Every project is written up the way a model magazine reports a build: kit, parts used, techniques, finish.",
+      "palette": [
+        "#eff0ec",
+        "#141518",
+        "#2443d6",
+        "#c9ccc6",
+        "#ff4b1f"
+      ],
+      "materials": [
+        "flat process-ink color fields on cool coated paper",
+        "cut-out build photography",
+        "boxed spec panels and technique sidebars"
+      ],
+      "viewport": "Opener spread: a huge condensed headline, a cut-out photo of the featured build (Notifly on a phone or the homelab rig) on a cobalt field, and a kit spec box holding the working Email action.",
+      "risk": "Can tip into a Gunpla fan page and drown the engineer you asked to lead; the hobby stays in the interests spread, and the builds on show are engineering.",
+      "raised": [
+        {
+          "from": "challenger-tdr-sleeve",
+          "raise": "Flat ink edge to edge: the feature color owns whole spreads, with no gradients, glass, or glow anywhere."
+        },
+        {
+          "from": "challenger-vu-meter",
+          "raise": "One color, one job: vermilion appears only on the Email action, never as decoration."
+        },
+        {
+          "from": "challenger-massin",
+          "raise": "Type scale carries volume: one shouting headline per spread, everything else set calm."
+        },
+        {
+          "from": "challenger-type-specimen",
+          "raise": "Width as voice: one variable grotesk family does both the condensed headlines and the body, its width axis set per role."
+        },
+        {
+          "from": "challenger-brine-calendar",
+          "raise": "Status is stated, never implied: every build carries a plain status line (pre-release, sample, running)."
+        }
+      ],
+      "wireframe": {
+        "cols": 12,
+        "rows": 10,
+        "regions": [
+          {
+            "label": "masthead nav",
+            "x": 0,
+            "y": 0,
+            "w": 12,
+            "h": 1
+          },
+          {
+            "label": "condensed headline",
+            "x": 0,
+            "y": 1,
+            "w": 7,
+            "h": 4,
+            "accent": true
+          },
+          {
+            "label": "cut-out featured build (Notifly / rig) on cobalt field",
+            "x": 7,
+            "y": 1,
+            "w": 5,
+            "h": 7
+          },
+          {
+            "label": "kit spec box + Email",
+            "x": 0,
+            "y": 5,
+            "w": 5,
+            "h": 3,
+            "accent": true
+          },
+          {
+            "label": "runner: stack parts A-D",
+            "x": 0,
+            "y": 8,
+            "w": 12,
+            "h": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "model-pick",
+      "label": "Photographer's Proof Sheet",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "darkroom contact sheets: rows of frames, grease-pencil selects, edge numbers",
+      "thesis": "Proof, literally: every project is a roll of frames, the shareable ones circled, the sealed ones fogged.",
+      "palette": [
+        "#16171a",
+        "#e9e7e1",
+        "#8d8f93",
+        "#ffcf33"
+      ],
+      "materials": [
+        "contact-printed frames",
+        "grease-pencil marks",
+        "film edge print"
+      ],
+      "viewport": "A contact sheet of the career: a circled frame for Notifly, one for the homelab, fogged frames marked as NDA work, Email in grease pencil.",
+      "risk": "Contact-sheet portfolios are a familiar photographer trope, and it can make the site read as a photography portfolio.",
+      "wireframe": {
+        "cols": 12,
+        "rows": 10,
+        "regions": [
+          {
+            "label": "name + role + Email",
+            "x": 0,
+            "y": 0,
+            "w": 12,
+            "h": 2,
+            "accent": true
+          },
+          {
+            "label": "roll 1: frames (Notifly circled)",
+            "x": 0,
+            "y": 2,
+            "w": 12,
+            "h": 2
+          },
+          {
+            "label": "roll 2: fogged NDA frames",
+            "x": 0,
+            "y": 4,
+            "w": 12,
+            "h": 2
+          },
+          {
+            "label": "roll 3: homelab frames",
+            "x": 0,
+            "y": 6,
+            "w": 12,
+            "h": 2
+          },
+          {
+            "label": "loupe detail",
+            "x": 8,
+            "y": 8,
+            "w": 4,
+            "h": 2,
+            "accent": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "challenger-provenance-ribbon",
+      "label": "Provenance Ribbon",
+      "verdict": "competitive",
+      "lineage": "museum provenance records: custody lines, dealer stamps, known and inferred passages",
+      "thesis": "A career since 2017 as one custody ribbon: shown work solid, NDA passages in hairline, never faked.",
+      "palette": [
+        "#efe6d2",
+        "#9e1b1b",
+        "#8a8a86",
+        "#6e6656"
+      ],
+      "materials": [
+        "laid archival paper",
+        "red silk ribbon line",
+        "fading stamp ink"
+      ],
+      "viewport": "The ribbon enters at 2017 and runs down the page, splitting into sealed work, Notifly, and the homelab.",
+      "case": "Holds product clarity (the NDA gaps are the honest centerpiece) but loses audience identification: museum archives are not this audience's world, and the palette sits in the cream, red, and serif rut.",
+      "risk": "Reads as a heritage brand rather than an engineer, and lands in the most common AI look.",
+      "hero": "https://impeccable.style/worlds/cards/exhibition-museum-curation-provenance-ribbon-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/exhibition-museum-curation-provenance-ribbon.webp",
+      "wireframe": {
+        "cols": 12,
+        "rows": 10,
+        "regions": [
+          {
+            "label": "name in ledger display",
+            "x": 0,
+            "y": 0,
+            "w": 8,
+            "h": 2
+          },
+          {
+            "label": "custody ribbon 2017 to now",
+            "x": 1,
+            "y": 2,
+            "w": 2,
+            "h": 8,
+            "accent": true
+          },
+          {
+            "label": "dated passages: known / sealed",
+            "x": 3,
+            "y": 2,
+            "w": 9,
+            "h": 8
+          }
+        ]
+      }
+    },
+    {
+      "id": "challenger-tdr-sleeve",
+      "label": "Designers Republic Sleeve",
+      "verdict": "declined",
+      "lineage": "The Designers Republic record sleeves and Wipeout packaging",
+      "thesis": "Hostile-brand info noise as immaculate branding.",
+      "palette": [
+        "#0b0b0b",
+        "#ff2e88",
+        "#ff6a00",
+        "#ffffff"
+      ],
+      "materials": [
+        "flat print on black",
+        "roundels and registration marks"
+      ],
+      "viewport": "One enormous condensed word shouting through barcode and warning-glyph noise.",
+      "case": "Loses both axes: hiring visitors cannot find the offer in the noise, and its faux-kanji ornament is a costume this owner should not wear.",
+      "kept": "Flat ink edge to edge, no gradients.",
+      "risk": "Noise hides the offer.",
+      "hero": "https://impeccable.style/worlds/cards/tdr-info-noise-sleeve-hero.webp"
+    },
+    {
+      "id": "challenger-vu-meter",
+      "label": "VU Meter Bridge",
+      "verdict": "declined",
+      "lineage": "recording-desk meter bridges",
+      "thesis": "Homelab services as a row of ballistic needles.",
+      "palette": [
+        "#efe8d6",
+        "#141414",
+        "#5b4632",
+        "#c62f2f"
+      ],
+      "materials": [
+        "meter glass",
+        "walnut and steel"
+      ],
+      "viewport": "A row of meters reading Proxmox, Immich, n8n, Beszel.",
+      "case": "Loses both axes: it carries only the homelab and turns the page into an instrument costume.",
+      "kept": "One color reserved for one job.",
+      "risk": "Instrument cosplay for one section.",
+      "hero": "https://impeccable.style/worlds/cards/signals-instruments-vu-meter-bridge-hero.webp"
+    },
+    {
+      "id": "challenger-massin",
+      "label": "Massin Stage Page",
+      "verdict": "declined",
+      "lineage": "Robert Massin's typographic theatre",
+      "thesis": "Case studies staged as dialogue between constraint and engineer.",
+      "palette": [
+        "#ffffff",
+        "#111111",
+        "#d22b2b"
+      ],
+      "materials": [
+        "black ink on white",
+        "stamp-print portraits"
+      ],
+      "viewport": "Two voices argue across the gutter in colliding sizes.",
+      "case": "Loses both axes: theatrical dialogue confuses a skim-reading hiring visitor.",
+      "kept": "Scale carries volume.",
+      "risk": "Too clever to scan.",
+      "hero": "https://impeccable.style/worlds/cards/massin-stage-page-hero.webp"
+    },
+    {
+      "id": "challenger-type-specimen",
+      "label": "Variable Type Specimen",
+      "verdict": "declined",
+      "lineage": "foundry type specimens",
+      "thesis": "The portfolio as an interactive specimen of its own face.",
+      "palette": [
+        "#f7f7f5",
+        "#111111",
+        "#ff4f00"
+      ],
+      "materials": [
+        "paper and ink",
+        "live axis sliders"
+      ],
+      "viewport": "One giant glyph morphing under a weight slider.",
+      "case": "Loses both axes: it proves type taste, not engineering.",
+      "kept": "One variable family, axis set per role.",
+      "risk": "Shows the wrong skill.",
+      "hero": "https://impeccable.style/worlds/cards/variable-font-specimen-hero.webp"
+    },
+    {
+      "id": "challenger-brine-calendar",
+      "label": "Pickling Brine Calendar",
+      "verdict": "declined",
+      "lineage": "seasonal fermentation shelves",
+      "thesis": "Projects as jars maturing on a shelf.",
+      "palette": [
+        "#eef1ea",
+        "#e8735a",
+        "#7a1f3d",
+        "#6f8f3a"
+      ],
+      "materials": [
+        "jar glass",
+        "kraft labels"
+      ],
+      "viewport": "A shelf of labelled jars.",
+      "case": "Loses both axes: no link to this audience or product.",
+      "kept": "Status stated in text.",
+      "risk": "Unrelated world.",
+      "hero": "https://impeccable.style/worlds/cards/food-fermentation-culinary-theater-pickling-brine-calendar-hero.webp"
+    }
+  ],
+  "reroll": {
+    "registers": [
+      "safer",
+      "bolder"
+    ]
+  },
+  "buildPath": {
+    "value": "code"
+  },
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "The senior developer portfolio as the category ships it, executed impeccably.",
+    "palette": [
+      "#0c0e12",
+      "#e6e8ec",
+      "#3b82f6"
+    ],
+    "materials": [
+      "clean grid",
+      "screenshots and photography"
+    ],
+    "viewport": "Name and role headline, short intro, Email button, selected work below.",
+    "risk": "Indistinguishable from every other dev portfolio by design.",
+    "wireframe": {
+      "cols": 12,
+      "rows": 10,
+      "regions": [
+        {
+          "label": "nav",
+          "x": 0,
+          "y": 0,
+          "w": 12,
+          "h": 1
+        },
+        {
+          "label": "name + role + Email",
+          "x": 0,
+          "y": 2,
+          "w": 7,
+          "h": 4,
+          "accent": true
+        },
+        {
+          "label": "portrait",
+          "x": 8,
+          "y": 2,
+          "w": 4,
+          "h": 4
+        },
+        {
+          "label": "selected work",
+          "x": 0,
+          "y": 7,
+          "w": 12,
+          "h": 3
+        }
+      ]
+    }
+  },
+  "steer": true
+}

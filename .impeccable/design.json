@@ -1,0 +1,436 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-22T10:58:35.447Z",
+  "title": "Design System: bsumatra.dev",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "primary",
+        "displayName": "Signage Ink",
+        "canonical": "#16171a",
+        "oklch": "oklch(20.5% 0.006 271.1)",
+        "tonalRamp": [
+          "oklch(15.0% 0.002 271.1)",
+          "oklch(26.4% 0.004 271.1)",
+          "oklch(37.9% 0.005 271.1)",
+          "oklch(49.3% 0.006 271.1)",
+          "oklch(60.7% 0.006 271.1)",
+          "oklch(72.1% 0.006 271.1)",
+          "oklch(83.6% 0.005 271.1)",
+          "oklch(95.0% 0.004 271.1)"
+        ]
+      },
+      "ink-raised": {
+        "role": "primary",
+        "displayName": "Raised Ink",
+        "canonical": "#2d2f35",
+        "oklch": "oklch(30.6% 0.011 271.0)",
+        "tonalRamp": [
+          "oklch(15.0% 0.004 271.0)",
+          "oklch(26.4% 0.007 271.0)",
+          "oklch(37.9% 0.010 271.0)",
+          "oklch(49.3% 0.011 271.0)",
+          "oklch(60.7% 0.011 271.0)",
+          "oklch(72.1% 0.011 271.0)",
+          "oklch(83.6% 0.009 271.0)",
+          "oklch(95.0% 0.006 271.0)"
+        ]
+      },
+      "line-p-blue": {
+        "role": "secondary",
+        "displayName": "Payments Blue",
+        "canonical": "#0a6cc0",
+        "oklch": "oklch(52.8% 0.154 252.0)",
+        "tonalRamp": [
+          "oklch(15.0% 0.054 252.0)",
+          "oklch(26.4% 0.095 252.0)",
+          "oklch(37.9% 0.136 252.0)",
+          "oklch(49.3% 0.154 252.0)",
+          "oklch(60.7% 0.154 252.0)",
+          "oklch(72.1% 0.154 252.0)",
+          "oklch(83.6% 0.131 252.0)",
+          "oklch(95.0% 0.090 252.0)"
+        ]
+      },
+      "line-d-green": {
+        "role": "secondary",
+        "displayName": "Dispatch Green",
+        "canonical": "#13924a",
+        "oklch": "oklch(58.0% 0.149 151.5)",
+        "tonalRamp": [
+          "oklch(15.0% 0.052 151.5)",
+          "oklch(26.4% 0.092 151.5)",
+          "oklch(37.9% 0.132 151.5)",
+          "oklch(49.3% 0.149 151.5)",
+          "oklch(60.7% 0.149 151.5)",
+          "oklch(72.1% 0.149 151.5)",
+          "oklch(83.6% 0.127 151.5)",
+          "oklch(95.0% 0.087 151.5)"
+        ]
+      },
+      "line-m-orange": {
+        "role": "secondary",
+        "displayName": "Monolith Orange",
+        "canonical": "#e98300",
+        "oklch": "oklch(70.7% 0.166 60.1)",
+        "tonalRamp": [
+          "oklch(15.0% 0.058 60.1)",
+          "oklch(26.4% 0.102 60.1)",
+          "oklch(37.9% 0.146 60.1)",
+          "oklch(49.3% 0.166 60.1)",
+          "oklch(60.7% 0.166 60.1)",
+          "oklch(72.1% 0.166 60.1)",
+          "oklch(83.6% 0.141 60.1)",
+          "oklch(95.0% 0.097 60.1)"
+        ]
+      },
+      "line-n-violet": {
+        "role": "secondary",
+        "displayName": "Notifly Violet",
+        "canonical": "#7443e6",
+        "oklch": "oklch(53.8% 0.230 290.2)",
+        "tonalRamp": [
+          "oklch(15.0% 0.080 290.2)",
+          "oklch(26.4% 0.142 290.2)",
+          "oklch(37.9% 0.203 290.2)",
+          "oklch(49.3% 0.230 290.2)",
+          "oklch(60.7% 0.230 290.2)",
+          "oklch(72.1% 0.230 290.2)",
+          "oklch(83.6% 0.195 290.2)",
+          "oklch(95.0% 0.134 290.2)"
+        ]
+      },
+      "line-h-red": {
+        "role": "secondary",
+        "displayName": "Homelab Red",
+        "canonical": "#cf2e26",
+        "oklch": "oklch(55.9% 0.198 28.4)",
+        "tonalRamp": [
+          "oklch(15.0% 0.069 28.4)",
+          "oklch(26.4% 0.122 28.4)",
+          "oklch(37.9% 0.175 28.4)",
+          "oklch(49.3% 0.198 28.4)",
+          "oklch(60.7% 0.198 28.4)",
+          "oklch(72.1% 0.198 28.4)",
+          "oklch(83.6% 0.168 28.4)",
+          "oklch(95.0% 0.116 28.4)"
+        ]
+      },
+      "line-s-bronze": {
+        "role": "secondary",
+        "displayName": "This-Site Bronze",
+        "canonical": "#94602a",
+        "oklch": "oklch(53.5% 0.097 63.9)",
+        "tonalRamp": [
+          "oklch(15.0% 0.034 63.9)",
+          "oklch(26.4% 0.060 63.9)",
+          "oklch(37.9% 0.085 63.9)",
+          "oklch(49.3% 0.097 63.9)",
+          "oklch(60.7% 0.097 63.9)",
+          "oklch(72.1% 0.097 63.9)",
+          "oklch(83.6% 0.082 63.9)",
+          "oklch(95.0% 0.056 63.9)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "White Enamel",
+        "canonical": "#f6f6f3",
+        "oklch": "oklch(97.2% 0.004 106.5)",
+        "tonalRamp": [
+          "oklch(15.0% 0.001 106.5)",
+          "oklch(26.4% 0.002 106.5)",
+          "oklch(37.9% 0.004 106.5)",
+          "oklch(49.3% 0.004 106.5)",
+          "oklch(60.7% 0.004 106.5)",
+          "oklch(72.1% 0.004 106.5)",
+          "oklch(83.6% 0.003 106.5)",
+          "oklch(95.0% 0.002 106.5)"
+        ]
+      },
+      "enamel-white": {
+        "role": "neutral",
+        "displayName": "Bright Enamel",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "oklch(15.0% 0.000 89.9)",
+          "oklch(26.4% 0.000 89.9)",
+          "oklch(37.9% 0.000 89.9)",
+          "oklch(49.3% 0.000 89.9)",
+          "oklch(60.7% 0.000 89.9)",
+          "oklch(72.1% 0.000 89.9)",
+          "oklch(83.6% 0.000 89.9)",
+          "oklch(95.0% 0.000 89.9)"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Slate",
+        "canonical": "#45484f",
+        "oklch": "oklch(40.1% 0.012 267.2)",
+        "tonalRamp": [
+          "oklch(15.0% 0.004 267.2)",
+          "oklch(26.4% 0.008 267.2)",
+          "oklch(37.9% 0.011 267.2)",
+          "oklch(49.3% 0.012 267.2)",
+          "oklch(60.7% 0.012 267.2)",
+          "oklch(72.1% 0.012 267.2)",
+          "oklch(83.6% 0.011 267.2)",
+          "oklch(95.0% 0.007 267.2)"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Pewter",
+        "canonical": "#6b6e75",
+        "oklch": "oklch(53.8% 0.011 267.3)",
+        "tonalRamp": [
+          "oklch(15.0% 0.004 267.3)",
+          "oklch(26.4% 0.007 267.3)",
+          "oklch(37.9% 0.010 267.3)",
+          "oklch(49.3% 0.011 267.3)",
+          "oklch(60.7% 0.011 267.3)",
+          "oklch(72.1% 0.011 267.3)",
+          "oklch(83.6% 0.010 267.3)",
+          "oklch(95.0% 0.007 267.3)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Platform Rule",
+        "canonical": "#d4d5d0",
+        "oklch": "oklch(87.1% 0.007 115.7)",
+        "tonalRamp": [
+          "oklch(15.0% 0.002 115.7)",
+          "oklch(26.4% 0.004 115.7)",
+          "oklch(37.9% 0.006 115.7)",
+          "oklch(49.3% 0.007 115.7)",
+          "oklch(60.7% 0.007 115.7)",
+          "oklch(72.1% 0.007 115.7)",
+          "oklch(83.6% 0.006 115.7)",
+          "oklch(95.0% 0.004 115.7)"
+        ]
+      },
+      "paper-on-ink": {
+        "role": "neutral",
+        "displayName": "Fog on Ink",
+        "canonical": "#c9cbc6",
+        "oklch": "oklch(83.9% 0.007 124.5)",
+        "tonalRamp": [
+          "oklch(15.0% 0.003 124.5)",
+          "oklch(26.4% 0.004 124.5)",
+          "oklch(37.9% 0.006 124.5)",
+          "oklch(49.3% 0.007 124.5)",
+          "oklch(60.7% 0.007 124.5)",
+          "oklch(72.1% 0.007 124.5)",
+          "oklch(83.6% 0.006 124.5)",
+          "oklch(95.0% 0.004 124.5)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Terminus close and detail-page titles; the hero name uses the same voice container-scaled (5.5cqw, 0.94)."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles, max 18ch, balanced wrap."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Route titles and detail-page prose h2."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Section ledes in Slate, max 58ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text with tabular numerals, max 65ch in prose."
+      },
+      "station-label": {
+        "displayName": "Station label",
+        "purpose": "Map station names with a 5px paper stroke halo; 850 for You are here."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Exponential ease-out for every transition and the draw-on-load."
+      },
+      {
+        "name": "line-draw",
+        "value": "1.2s ease-out, delay calc(var(--i) * 110ms + 120ms)",
+        "purpose": "The one authored moment: tracks draw along their routes in legend order on first load; static under reduced motion."
+      },
+      {
+        "name": "network-appear",
+        "value": "0.6s ease-out, delay 650ms",
+        "purpose": "Stations and roundel badges fade in as the tracks draw; sample dashes follow at 900ms plus stagger."
+      },
+      {
+        "name": "route-dim",
+        "value": "opacity 0.3s ease-out",
+        "purpose": "Line routing: unfocused lines to 12%, unserved stations to 22%, legend rows to 35%."
+      },
+      {
+        "name": "plate-state",
+        "value": "background-color 0.2s ease-out, transform 0.15s ease-out",
+        "purpose": "Button hover shift and 1px press."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "masthead-compact",
+        "value": "max-width: 640px"
+      },
+      {
+        "name": "strip-horizontal",
+        "value": "min-width: 720px"
+      },
+      {
+        "name": "single-column",
+        "value": "max-width: 860px"
+      },
+      {
+        "name": "map-pan",
+        "value": "max-width: 1099px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ink signage plate for the one action: Email.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Email me</a>",
+      "css": ":host { --paper:#f6f6f3; --ink:#16171a; --ink-2:#45484f; --ink-3:#6b6e75; --rule:#d4d5d0; --ease-out:cubic-bezier(0.16,1,0.3,1); } .ds-btn { display:inline-flex; align-items:center; justify-content:center; background:var(--ink); color:var(--paper); font-family: var(--font-sans, Overpass), system-ui, sans-serif; font-weight:800; font-size:17px; text-decoration:none; padding:0.85em 1.6em; white-space:nowrap; border-radius:0; transition: background-color 0.2s var(--ease-out), transform 0.15s var(--ease-out); } .ds-btn:hover { background:#2d2f35; } .ds-btn:active { transform:translateY(1px); } .ds-btn:focus-visible { outline: 3px solid var(--ink, #16171a); outline-offset: 3px; }"
+    },
+    {
+      "name": "Inverse Button",
+      "kind": "button",
+      "refersTo": "button-inverse",
+      "description": "Paper plate on the ink terminus block.",
+      "html": "<div class=\"ds-ink\"><a class=\"ds-btn-inv\" href=\"#\">Email me</a></div>",
+      "css": ":host { --paper:#f6f6f3; --ink:#16171a; --ink-2:#45484f; --ink-3:#6b6e75; --rule:#d4d5d0; --ease-out:cubic-bezier(0.16,1,0.3,1); } .ds-ink { background:var(--ink); padding:32px; } .ds-btn-inv { display:inline-flex; background:var(--paper); color:var(--ink); font-family: var(--font-sans, Overpass), system-ui, sans-serif; font-weight:800; font-size:17px; text-decoration:none; padding:0.85em 1.6em; border-radius:0; transition: background-color 0.2s var(--ease-out), transform 0.15s var(--ease-out); } .ds-btn-inv:hover { background:#fff; } .ds-btn-inv:active { transform:translateY(1px); } .ds-btn-inv:focus-visible { outline:3px solid var(--paper); outline-offset:3px; }"
+    },
+    {
+      "name": "Roundel",
+      "kind": "chip",
+      "refersTo": "roundel",
+      "description": "Line identity mark: paper disc, ring in the line color, line letter at 900.",
+      "html": "<span class=\"ds-roundel\" style=\"--line:#7443e6\">N</span> <span class=\"ds-roundel ds-roundel--lg\" style=\"--line:#cf2e26\">H</span>",
+      "css": ":host { --paper:#f6f6f3; --ink:#16171a; --ink-2:#45484f; --ink-3:#6b6e75; --rule:#d4d5d0; --ease-out:cubic-bezier(0.16,1,0.3,1); } .ds-roundel { --size:28px; display:inline-grid; place-items:center; width:var(--size); height:var(--size); border-radius:50%; border:calc(var(--size) * 0.17) solid var(--line); background:var(--paper); color:var(--ink); font-family: var(--font-sans, Overpass), system-ui, sans-serif; font-weight:900; font-size:calc(var(--size) * 0.42); line-height:1; box-sizing:border-box; } .ds-roundel--lg { --size:56px; }"
+    },
+    {
+      "name": "Sample Tag",
+      "kind": "chip",
+      "description": "Inline dashed status mark for stand-in content; sits inside the sentence that explains it, never a kicker on a heading.",
+      "html": "<p class=\"ds-notice\"><span class=\"ds-sample\">Sample</span> These three are samples that show the format.</p>",
+      "css": ":host { --paper:#f6f6f3; --ink:#16171a; --ink-2:#45484f; --ink-3:#6b6e75; --rule:#d4d5d0; --ease-out:cubic-bezier(0.16,1,0.3,1); } .ds-notice { display:flex; align-items:center; gap:10px; font-family: var(--font-sans, Overpass), system-ui, sans-serif; font-size:0.95rem; font-weight:600; color:var(--ink); } .ds-sample { display:inline-block; padding:2px 8px; border:2px dashed currentColor; font-size:0.75rem; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; line-height:1.5; }"
+    },
+    {
+      "name": "Strip Map",
+      "kind": "custom",
+      "description": "In-train door diagram: stops on an 8px spine in the line color; a dashed paper stripe marks a sample line.",
+      "html": "<ol class=\"ds-strip\" data-sample style=\"--line:#0a6cc0\"><li class=\"ds-stop\"><span class=\"ds-dot\"></span><span class=\"ds-name\">React</span></li><li class=\"ds-stop\"><span class=\"ds-dot\"></span><span class=\"ds-name\">Next.js</span></li><li class=\"ds-stop\"><span class=\"ds-dot\"></span><span class=\"ds-name\">TypeScript</span></li><li class=\"ds-stop\"><span class=\"ds-dot\"></span><span class=\"ds-name\">PostgreSQL</span></li></ol>",
+      "css": ":host { --paper:#f6f6f3; --ink:#16171a; --ink-2:#45484f; --ink-3:#6b6e75; --rule:#d4d5d0; --ease-out:cubic-bezier(0.16,1,0.3,1); } .ds-strip { list-style:none; margin:0; padding:0; display:grid; grid-auto-flow:column; grid-auto-columns:minmax(0,1fr); font-family: var(--font-sans, Overpass), system-ui, sans-serif; color:var(--ink); } .ds-stop { position:relative; display:flex; flex-direction:column; align-items:center; text-align:center; padding:0 6px; } .ds-stop::before, .ds-stop::after { content:\"\"; position:absolute; left:50%; top:10px; width:100%; transform:translateY(-50%); } .ds-stop::before { height:8px; background:var(--line); } .ds-strip[data-sample] .ds-stop::after { height:3px; background:repeating-linear-gradient(90deg, var(--paper) 0 8px, transparent 8px 16px); } .ds-stop:last-child::before, .ds-stop:last-child::after { display:none; } .ds-dot { position:relative; z-index:1; width:20px; height:20px; border-radius:50%; background:var(--paper); border:3px solid var(--ink); box-sizing:border-box; } .ds-name { margin-top:14px; font-weight:800; line-height:1.3; }"
+    },
+    {
+      "name": "Legend",
+      "kind": "nav",
+      "description": "Legend panel whose line rows double as navigation; rows dim with the map when another line is focused.",
+      "html": "<nav class=\"ds-legend\"><div class=\"ds-legend-head\">Lines</div><a class=\"ds-row\" href=\"#\"><span class=\"ds-r\" style=\"--line:#7443e6\">N</span><span class=\"ds-n\">Notifly</span><span class=\"ds-k\">Android app</span></a><a class=\"ds-row\" href=\"#\"><span class=\"ds-r\" style=\"--line:#cf2e26\">H</span><span class=\"ds-n\">Homelab</span><span class=\"ds-k\">Proxmox</span></a></nav>",
+      "css": ":host { --paper:#f6f6f3; --ink:#16171a; --ink-2:#45484f; --ink-3:#6b6e75; --rule:#d4d5d0; --ease-out:cubic-bezier(0.16,1,0.3,1); } .ds-legend { width:240px; padding:14px 16px; background:var(--paper); border:3px solid var(--ink); font-family: var(--font-sans, Overpass), system-ui, sans-serif; font-size:14px; line-height:1.3; color:var(--ink); } .ds-legend-head { font-size:1.25em; font-weight:900; margin-bottom:0.5em; } .ds-row { display:grid; grid-template-columns:auto 1fr; column-gap:0.7em; align-items:center; padding:0.32em 0; color:inherit; text-decoration:none; transition:opacity 0.3s var(--ease-out); } .ds-row:focus-visible { outline: 3px solid var(--ink, #16171a); outline-offset: 3px; } .ds-r { grid-row:span 2; display:inline-grid; place-items:center; width:24px; height:24px; border-radius:50%; border:4px solid var(--line); background:var(--paper); box-sizing:border-box; font-weight:900; font-size:10px; } .ds-n { font-weight:800; } .ds-row:hover .ds-n { text-decoration:underline; text-decoration-thickness:2px; } .ds-k { color:var(--ink-2); font-size:0.88em; }"
+    },
+    {
+      "name": "Masthead",
+      "kind": "nav",
+      "description": "64px bar under a 3px ink rule: ring mark, 700 links, small Email plate.",
+      "html": "<header class=\"ds-mast\"><a class=\"ds-mark\" href=\"#\"><span class=\"ds-ring\"></span>bsumatra.dev</a><nav class=\"ds-nav\"><a class=\"ds-link\" href=\"#\">Client work</a><a class=\"ds-link\" href=\"#\">Notifly</a><a class=\"ds-sm\" href=\"#\">Email me</a></nav></header>",
+      "css": ":host { --paper:#f6f6f3; --ink:#16171a; --ink-2:#45484f; --ink-3:#6b6e75; --rule:#d4d5d0; --ease-out:cubic-bezier(0.16,1,0.3,1); } .ds-mast { height:64px; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:0 24px; border-bottom:3px solid var(--ink); background:var(--paper); font-family: var(--font-sans, Overpass), system-ui, sans-serif; color:var(--ink); } .ds-mark { display:inline-flex; align-items:center; gap:10px; font-weight:900; font-size:1.1rem; letter-spacing:-0.01em; color:inherit; text-decoration:none; } .ds-ring { width:20px; height:20px; border-radius:50%; border:5px solid var(--ink); box-sizing:border-box; } .ds-nav { display:flex; align-items:center; gap:28px; } .ds-link { font-weight:700; color:inherit; text-decoration:none; } .ds-link:hover { text-decoration:underline; } .ds-sm { background:var(--ink); color:var(--paper); font-weight:800; font-size:0.9rem; padding:0.5em 1em; text-decoration:none; } .ds-link:focus-visible, .ds-mark:focus-visible, .ds-sm:focus-visible { outline: 3px solid var(--ink, #16171a); outline-offset: 3px; }"
+    },
+    {
+      "name": "Board",
+      "kind": "card",
+      "refersTo": "board-title",
+      "description": "Departure board: ink title bar with roundel, two-column rows split by 1px rules, framed in 3px ink.",
+      "html": "<div class=\"ds-board\"><div class=\"ds-board-title\"><span class=\"ds-br\" style=\"--line:#cf2e26\">H</span> Also running on the box</div><dl class=\"ds-rows\"><div class=\"ds-cell\"><dt>Immich</dt><dd>Photo library, self-hosted.</dd></div><div class=\"ds-cell\"><dt>n8n</dt><dd>Workflow automation.</dd></div></dl></div>",
+      "css": ":host { --paper:#f6f6f3; --ink:#16171a; --ink-2:#45484f; --ink-3:#6b6e75; --rule:#d4d5d0; --ease-out:cubic-bezier(0.16,1,0.3,1); } .ds-board { border:3px solid var(--ink); font-family: var(--font-sans, Overpass), system-ui, sans-serif; color:var(--ink); background:var(--paper); } .ds-board-title { display:flex; align-items:center; gap:12px; padding:12px 20px; background:var(--ink); color:var(--paper); font-size:1.1rem; font-weight:800; } .ds-br { width:26px; height:26px; display:inline-grid; place-items:center; border-radius:50%; border:4px solid var(--line); background:var(--paper); color:var(--ink); box-sizing:border-box; font-weight:900; font-size:11px; } .ds-rows { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); margin:0; } .ds-cell { padding:18px 20px; } .ds-cell:first-child { border-right:1px solid var(--rule); } .ds-cell dt { font-size:1.15rem; font-weight:900; } .ds-cell dd { margin:0; color:var(--ink-2); }"
+    },
+    {
+      "name": "Text Link",
+      "kind": "custom",
+      "description": "800-weight link with a 3px underline in the line color, turning ink on hover.",
+      "html": "<a class=\"ds-tlink\" href=\"#\" style=\"--line:#7443e6\">Read the Notifly build</a>",
+      "css": ":host { --paper:#f6f6f3; --ink:#16171a; --ink-2:#45484f; --ink-3:#6b6e75; --rule:#d4d5d0; --ease-out:cubic-bezier(0.16,1,0.3,1); } .ds-tlink { font-family: var(--font-sans, Overpass), system-ui, sans-serif; font-weight:800; color:var(--ink); text-underline-offset:0.2em; text-decoration-color:var(--line, var(--ink)); text-decoration-thickness:3px; } .ds-tlink:hover { text-decoration-color:var(--ink); } .ds-tlink:focus-visible { outline: 3px solid var(--ink, #16171a); outline-offset: 3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Transit Diagram",
+    "overview": "The career is drawn as a rail network. Every build is a line with one saturated color and a letter roundel; every technology is a station; lines cross where skills interchange. The page reads like station signage printed on white enamel: ink-black type in heavy highway-signage weights, square panels, thick ink rules, and nothing that floats. The color comes from the lines, never from the chrome.\n\nDensity follows real transit graphics. The home page opens on a full-width octilinear map with the title panel and legend set into its empty regions. Detail pages pick up the same vocabulary through the strip map, the in-train door diagram: a straight run of stops on the line's color. Surfaces are flat. Hierarchy comes from weight, size, and 3px ink borders, not from shadow or tint.\n\nMotion is authored once. On first load the lines draw along their routes in legend order. After that, everything is a state change: hovering or focusing a line dims the rest of the network.",
+    "keyCharacteristics": [
+      "White enamel ground, ink type, six line colors as the only chroma.",
+      "Overpass at 800–900 for every title, regular for body, tabular numerals throughout.",
+      "Square signage panels with 3px ink borders; circles only for roundels, stops, and interchanges.",
+      "Dashed track means \"sample\", always and only.",
+      "Flat: no shadows anywhere."
+    ],
+    "rules": [
+      {
+        "name": "The Route Color Rule",
+        "body": "A line color belongs to one build and is set through `--line`. It strokes, borders, fills spines, and colors underlines. It never sets text color: orange on paper is about 2.5:1.",
+        "section": "colors"
+      },
+      {
+        "name": "The Monochrome Chrome Rule",
+        "body": "Masthead, buttons, panels, and headings are ink and paper only. If a non-map element needs color, it borrows the color of the line it belongs to.",
+        "section": "colors"
+      },
+      {
+        "name": "The Heavy Signage Rule",
+        "body": "Every title and every interactive label is 700 or heavier: 900 for titles; 800 for buttons, legend names, strip stop names, back links, and text links; 700 for masthead links. Weight carries the hierarchy, and color does not.",
+        "section": "typography"
+      },
+      {
+        "name": "The No Kicker Rule",
+        "body": "No eyebrow or kicker text is attached to a heading. The line roundel is the only mark that may lead a title.",
+        "section": "typography"
+      },
+      {
+        "name": "The Empty Region Rule",
+        "body": "Panels over the map sit only in regions that have no track or label. Map geometry is laid out around them, never under them.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Enamel Rule",
+        "body": "Nothing casts a shadow. When a surface must separate, it gets an ink border or inverts to ink.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Circles Are Stations Rule",
+        "body": "A round shape always means a stop, an interchange, or a line roundel. UI chrome never gets rounded corners.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "**Do** give every build its own line color, letter roundel, and `--line` scope, and carry that color into every element that belongs to it.",
+      "**Do** use dashed track (paper dash over the line) and the dashed Sample Tag to mark sample or placeholder content, and say so in words beside it.",
+      "**Do** set titles and interactive labels in Overpass at 700–900, and frame panels with 3px ink borders.",
+      "**Do** keep the draw-on-load as the only authored motion. Everything else is a hover or focus state transition with the ease-out curve, and the map is static under reduced motion.",
+      "**Do** dim rather than hide: unfocused lines drop to 12% and unserved stations to 22%."
+    ],
+    "donts": [
+      "**Don't** set text in a line color. Line colors stroke, border, and underline only.",
+      "**Don't** use dashing as decoration on a real line or panel. Dashed means sample.",
+      "**Don't** add shadows, decorative gradients, or rounded corners to chrome. The only gradient is the sample dash, and circles are stations.",
+      "**Don't** attach a kicker or eyebrow label to a heading; only the line roundel may lead a title.",
+      "**Don't** introduce a second typeface or a color outside ink, paper, and the line palette."
+    ]
+  }
+}
