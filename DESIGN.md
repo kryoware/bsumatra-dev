@@ -10,6 +10,9 @@ colors:
   ink-3: "#6b6e75"
   rule: "#d4d5d0"
   paper-on-ink: "#c9cbc6"
+  paper-2: "#e9eae6"
+  sign-bg: "#16171a"
+  sign-ink: "#f6f6f3"
   line-p-blue: "#0a6cc0"
   line-d-green: "#13924a"
   line-m-orange: "#e98300"
@@ -35,17 +38,56 @@ typography:
     fontWeight: 900
     lineHeight: 1.1
     letterSpacing: "-0.015em"
+  hero-name-mobile:
+    fontFamily: "Overpass, system-ui, sans-serif"
+    fontSize: "clamp(2.6rem, 9vw, 4.2rem)"
+    fontWeight: 900
+    lineHeight: 0.94
+    letterSpacing: "-0.035em"
+  page-title:
+    fontFamily: "Overpass, system-ui, sans-serif"
+    fontSize: "clamp(2.8rem, 7vw, 5.2rem)"
+    fontWeight: 900
+    lineHeight: 0.95
+    letterSpacing: "-0.035em"
+  prose-title:
+    fontFamily: "Overpass, system-ui, sans-serif"
+    fontSize: "clamp(1.6rem, 2.6vw, 2rem)"
+    fontWeight: 900
+    lineHeight: 1.15
+    letterSpacing: "-0.02em"
+  page-lede:
+    fontFamily: "Overpass, system-ui, sans-serif"
+    fontSize: "clamp(1.25rem, 2vw, 1.5rem)"
+    fontWeight: 600
   lede:
     fontFamily: "Overpass, system-ui, sans-serif"
     fontSize: "1.2rem"
     fontWeight: 400
     lineHeight: 1.6
+  lede-sm:
+    fontFamily: "Overpass, system-ui, sans-serif"
+    fontSize: "1.15rem"
+    fontWeight: 400
+  sign:
+    fontFamily: "Overpass, system-ui, sans-serif"
+    fontSize: "1.1rem"
+    fontWeight: 900
   body:
     fontFamily: "Overpass, system-ui, sans-serif"
     fontSize: "17px"
     fontWeight: 400
     lineHeight: 1.6
     fontFeature: "\"tnum\""
+  caption:
+    fontFamily: "Overpass, system-ui, sans-serif"
+    fontSize: "0.9rem"
+    fontWeight: 400
+  label:
+    fontFamily: "Overpass, system-ui, sans-serif"
+    fontSize: "0.75rem"
+    fontWeight: 800
+    letterSpacing: "0.06em"
   station-label:
     fontFamily: "Overpass, system-ui, sans-serif"
     fontSize: "15px"
@@ -53,6 +95,7 @@ typography:
 rounded:
   none: "0"
   full: "50%"
+  track-cap: "5px"
 spacing:
   gutter: "clamp(16px, 4vw, 48px)"
   section-top: "clamp(80px, 11vw, 144px)"
@@ -69,18 +112,35 @@ components:
     backgroundColor: "{colors.ink-raised}"
     textColor: "{colors.paper}"
   button-inverse:
-    backgroundColor: "{colors.paper}"
-    textColor: "{colors.ink}"
+    backgroundColor: "{colors.sign-ink}"
+    textColor: "{colors.sign-bg}"
     rounded: "{rounded.none}"
     padding: "0.85em 1.6em"
   button-inverse-hover:
-    backgroundColor: "{colors.enamel-white}"
-    textColor: "{colors.ink}"
+    backgroundColor: "{colors.paper-on-ink}"
+    textColor: "{colors.sign-bg}"
   button-small:
     backgroundColor: "{colors.ink}"
     textColor: "{colors.paper}"
     rounded: "{rounded.none}"
     padding: "0.5em 1em"
+  button-outline:
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.none}"
+    padding: "0.3em 0.75em"
+    height: "32px"
+  button-outline-hover:
+    backgroundColor: "{colors.paper-2}"
+    textColor: "{colors.ink}"
+  theme-toggle:
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.none}"
+    size: "44px"
+  theme-toggle-hover:
+    backgroundColor: "{colors.paper-2}"
+    textColor: "{colors.ink}"
   roundel:
     backgroundColor: "{colors.paper}"
     textColor: "{colors.ink}"
@@ -92,13 +152,13 @@ components:
     rounded: "{rounded.full}"
     size: "56px"
   board-title:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.paper}"
+    backgroundColor: "{colors.sign-bg}"
+    textColor: "{colors.sign-ink}"
     rounded: "{rounded.none}"
     padding: "12px 20px"
   terminus:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.paper}"
+    backgroundColor: "{colors.sign-bg}"
+    textColor: "{colors.sign-ink}"
     rounded: "{rounded.none}"
     padding: "clamp(40px, 6vw, 88px)"
 ---
@@ -113,7 +173,7 @@ The career is drawn as a rail network. Every build is a line with one saturated 
 
 Density follows real transit graphics. The home page opens on a full-width octilinear map with the title panel and legend set into its empty regions. Detail pages pick up the same vocabulary through the strip map, the in-train door diagram: a straight run of stops on the line's color. Surfaces are flat. Hierarchy comes from weight, size, and 3px ink borders, not from shadow or tint.
 
-Motion is authored once. On first load the lines draw along their routes in legend order. After that, everything is a state change: hovering or focusing a line dims the rest of the network.
+Motion has two authored moments, both on the map. On first load the lines draw along their routes in legend order. Then the network runs: a small carriage on every line travels out and back, dwelling at each station while a ring in the line color pulses outward. The trains are ambient, pausable from the legend, paused while the map is off-screen or the tab is hidden, and absent under reduced motion. Everything else is a state change: hovering or focusing a line dims the rest of the network.
 
 **Key Characteristics:**
 - White enamel ground, ink type, six line colors as the only chroma.
@@ -121,6 +181,7 @@ Motion is authored once. On first load the lines draw along their routes in lege
 - Square signage panels with 3px ink borders; circles only for roundels, stops, and interchanges.
 - Dashed track means "sample", always and only.
 - Flat: no shadows anywhere.
+- A light and a dark theme of the same signage; the route colors never change.
 
 ## Colors
 
@@ -145,15 +206,18 @@ The six route colors. Each belongs to one line and travels with it everywhere: t
 - **Monolith Orange** (line-m-orange, #e98300): Line M, Monolith split (sample).
 - **Notifly Violet** (line-n-violet, #7443e6): Line N, Notifly.
 - **Homelab Red** (line-h-red, #cf2e26): Line H, Homelab.
-- **This-Site Bronze** (line-s-bronze, #94602a): Line S, the request path that serves this site.
+- **This-Site Bronze** (line-s-bronze, #94602a): Line S, the request path that serves this site: TypeScript and Next.js, Cloudflare, then the visitor.
 
 ### Neutral
 - **White Enamel** (paper, #f6f6f3): Page ground, roundel and stop fills, legend panel, the stroke halo behind map labels, and text on ink.
-- **Bright Enamel** (enamel-white, #ffffff): Diagram panels that sit on paper (the Notifly feature diagram) and the inverse button hover.
+- **Bright Enamel** (enamel-white, #ffffff): Diagram panels that sit on paper (the Notifly feature diagram).
+- **Worn Enamel** (paper-2, #e9eae6): Hover ground for outlined controls (theme toggle, legend train control).
 - **Slate** (ink-2, #45484f): Secondary text such as ledes, legend kinds, route meta, strip notes, and spec terms.
 - **Pewter** (ink-3, #6b6e75): Fine print, branch spurs, and the scrollbar thumb.
 - **Platform Rule** (rule, #d4d5d0): Hairline 1px dividers inside panels (board rows, spec rows, legend key, mobile map frame).
-- **Fog on Ink** (paper-on-ink, #c9cbc6): Body text on the ink terminus block.
+- **Sign Panel** (sign-bg, #16171a): Board title bars and the terminus block. In dark mode it stays a dark panel (#202329) instead of inverting to white.
+- **Sign Lettering** (sign-ink, #f6f6f3): Text on sign panels, and the inverse button plate.
+- **Fog on Ink** (paper-on-ink, #c9cbc6): Body text on sign panels and the inverse button hover.
 
 ### Named Rules
 **The Route Color Rule.** A line color belongs to one build and is set through `--line`. It strokes, borders, fills spines, and colors underlines. It never sets text color: orange on paper is about 2.5:1.
@@ -168,21 +232,27 @@ The six route colors. Each belongs to one line and travels with it everywhere: t
 **Character:** One highway-signage face across the system. Titles run at 900 with tight negative tracking; body runs at 400 with generous 1.6 leading and tabular numerals.
 
 ### Hierarchy
-- **Display** (900, clamp(2.6rem, 6vw, 5rem), 1): Terminus close. Detail page titles use the same voice slightly larger (clamp(2.8rem, 7vw, 5.2rem), 0.95). The hero name is container-scaled (5.5cqw, 0.94) so it fits its map panel.
+- **Display** (900, clamp(2.6rem, 6vw, 5rem), 1): Terminus close. Detail page titles use the same voice slightly larger (clamp(2.8rem, 7vw, 5.2rem), 0.95). The hero name is container-scaled (5.5cqw, 0.94) so it fits its map panel. Below 1100px it is fluid instead (hero-name-mobile).
 - **Headline** (900, clamp(2.1rem, 4.2vw, 3.5rem), 1.02): Section titles, max 18ch, balanced wrap.
 - **Title** (900, clamp(1.4rem, 2.4vw, 1.9rem), 1.1): Route titles. Prose h2 on detail pages sits close (clamp(1.6rem, 2.6vw, 2rem), 1.15).
 - **Lede** (400, 1.2rem): Section ledes in Slate, max 58ch. Detail-page ledes rise to 600 weight at clamp(1.25rem, 2vw, 1.5rem).
 - **Body** (400, 17px, 1.6): Running text, max 65ch in prose.
+- **Lede small** (400, 1.15rem): Route summaries, the terminus address, and detail-page closing lines.
+- **Sign** (900, 1.1rem): The masthead name and board title bars.
+- **Caption** (400, 0.9rem): Fine print, the footer, the mobile map hint, and the small button.
+- **Label** (800, 0.75rem, 0.06em, uppercase): The Sample Tag only.
 - **Station label** (650, 15px): Map station names with a 5px paper stroke halo. "You are here" steps up to 850.
 
 ### Named Rules
 **The Heavy Signage Rule.** Every title and every interactive label is 700 or heavier: 900 for titles; 800 for buttons, legend names, strip stop names, back links, and text links; 700 for masthead links. Weight carries the hierarchy, and color does not.
 
+**The 12px Floor Rule.** No HTML text drops below 12px. Container-scaled legend text uses `max(12px, ...)` so it holds the floor on short laptop screens. Map labels are SVG and scale with the plate (about 11.7px on the 940px phone plate); the legend repeats every line name as HTML text.
+
 **The No Kicker Rule.** No eyebrow or kicker text is attached to a heading. The line roundel is the only mark that may lead a title.
 
 ## Layout
 
-The home hero is a 1200×680 map viewBox inside a container-query frame that is sized to fit the viewport below the 64px masthead. The title panel and legend are absolutely placed into map regions that have no track. Below 1100px the frame unstacks: title and Email first, then the map as a horizontally pannable 940px plate between 1px rules, then the legend as tappable rows.
+The home hero is a 1200×680 map viewBox inside a container-query frame that is sized to fit the viewport below the 64px masthead. The title panel (viewBox x 32 to 520, y 32 to 340) and the legend (x 960 to 1180, from y 270) are placed into map regions that have no track. The legend, with its NDA line, must sit inside the first viewport down to 1280x720; with a fine pointer its rows tighten to 36px (touch keeps 44px) to make that fit. Below 1100px the frame unstacks: title and Email first, then the map as a horizontally pannable 940px plate between 1px rules, then the legend as tappable rows.
 
 Sections share a 1240px container with the fluid gutter and section-top rhythm. Detail pages narrow to 980px. Strip maps run vertically by default and turn horizontal from 720px. Two-column blocks (feature, split prose) collapse below 860px. Two-column boards and spec lists collapse below 640px, where the masthead also drops its text links and keeps only Email.
 
@@ -196,7 +266,7 @@ The system is flat. There are no box shadows. Depth is conveyed by signage means
 
 ## Shapes
 
-Corners are square (0) on every panel, button, board, and tag. Circles are reserved for transit marks: roundels (border at 17% of size), stops (small paper dots with an ink ring), interchange rings, the "you are here" ring and dot, and strip-map dots. Interchanges where lines run in parallel are paper capsules with an ink outline. Track corners turn on octilinear bends with a 22px rounded join and round caps.
+Corners are square (0) on every panel, button, board, and tag. Circles are reserved for transit marks: roundels (border at 17% of size), stops (small paper dots with an ink ring), interchange rings, the "you are here" ring and dot, and strip-map dots. Interchanges where lines run in parallel are paper capsules with an ink outline. Track corners turn on octilinear bends with a 22px rounded join and round caps. The legend's sample-key glyph is a miniature track with a 5px round cap (track-cap). Train carriages are the one rounded rectangle (3px corners), because they are vehicles on the track, not chrome.
 
 Borders come in three weights: 3px ink for panels and section rules, 2px dashed for sample notices, and 1px rule for internal dividers.
 
@@ -211,6 +281,7 @@ Signage plates: solid, square, heavy.
 - **Hover / Focus:** background shifts to Raised Ink with a 0.2s ease-out. Active presses down 1px. Focus shows a 3px ink outline with 3px offset.
 - **Inverse:** paper plate on ink (terminus). Hover lifts to Bright Enamel, and the focus outline turns paper.
 - **Small:** padding 0.5em 1em at 0.9rem (masthead Email).
+- **Outline:** paper plate with a 2px ink border, ink text at 800, hover to Worn Enamel. Used for secondary controls that must not compete with Email: the legend's "Pause trains" control (32px tall, 44px on touch layouts) and the 44px masthead theme toggle, which carries a drawn sun or moon icon and a screen-reader label naming the theme it switches to.
 
 ### Roundel
 The line's identity mark: a paper disc with a thick ring in the line color and the line letter at 900. Default 28px, large 56px. It sits beside route titles, the legend rows, the board title, detail-page heads, and next-line links. It is always aria-hidden, because the line name is always present as text.
@@ -219,10 +290,10 @@ The line's identity mark: a paper disc with a thick ring in the line color and t
 The in-train door diagram. An ordered list of stops on an 8px spine in the line color, with 20px paper dots ringed in ink. Stop names are 800; notes are Slate at 0.92rem. Branches leave as a short Pewter spur. It is vertical by default and horizontal from 720px. On sample lines a dashed paper stripe runs down the spine.
 
 ### Network Map (signature)
-Octilinear SVG. Tracks are 9px with round caps in the line color, widening to 14px on keyboard focus. Sample lines overlay a 3px paper dash (9/9). Hovering or focusing a line or legend row dims other lines to 12% and unserved stations to 22%. Hovering a station lights every line through it. On first load the tracks draw in legend order (1.2s, 110ms stagger, exponential ease-out). Under reduced motion the map is static.
+Octilinear SVG. Tracks are 9px with round caps in the line color, widening to 14px on keyboard focus. Sample lines overlay a 3px paper dash (9/9). Hovering or focusing a line or legend row dims other lines to 12% and unserved stations to 22%. Hovering a station lights every line through it. On first load the tracks draw in legend order (1.2s, 110ms stagger, exponential ease-out). After 1.8s the trains start, staggered 0.35s per line: a 24x12 paper carriage with an ink outline and windows in the line color rides the track at 60 units per second, dwells 1.4s at every station, and fires a 1.1s ring pulse in the line color as it arrives. Trains dim with their line, pause off-screen or in a hidden tab, and stop when the legend control is pressed. Under reduced motion the map is static and the control is hidden. The map plate takes a tab stop only when it pans (below 1100px). Line S runs TypeScript, Next.js, Cloudflare, then "You are here"; it crosses Line H without a station because the site does not run on the homelab.
 
 ### Legend
-A paper panel with a 3px ink border, set into the map. Line rows (roundel, 800 name, Slate kind) double as navigation and dim along with the map. A 1px rule separates the dashed sample key and the NDA line.
+A paper panel with a 3px ink border, set into the map. Its head row pairs the "Lines" title with the outline train control. Line rows (roundel, 800 name, Slate kind) double as navigation and dim along with the map. A 1px rule separates the dashed sample key and the NDA line. All legend fine print holds the 12px floor.
 
 ### Sample Tag
 An inline status mark for stand-in content: 2px dashed border in the current color, 0.75rem, 800, uppercase with 0.06em tracking. It always sits inline inside the sentence that explains the stand-in. It is never a kicker on a heading and is not a general label style.
@@ -237,6 +308,8 @@ An inline status mark for stand-in content: 2px dashed border in the current col
 - **Masthead:** 64px bar with a 3px ink bottom rule. The mark is a 5px-ring ink circle plus the name at 900. Links are 700 with an underline on hover. The small Email button is always present, and the text links hide below 640px.
 - **Text link:** 800 weight with a 3px underline in the line color (ink outside a line), turning ink on hover.
 - **Next line:** a footer bar on detail pages under a 3px ink rule, with a roundel and the next title.
+- **Not on the map (404):** a detail-page layout with an "All lines" back link, a page title, a page lede, and links back to the map and Email. No roundel, because no line serves it.
+- **Favicon:** the masthead ring mark as SVG, ink on paper, inverted under a dark system scheme.
 
 ## Do's and Don'ts
 
@@ -244,7 +317,8 @@ An inline status mark for stand-in content: 2px dashed border in the current col
 - **Do** give every build its own line color, letter roundel, and `--line` scope, and carry that color into every element that belongs to it.
 - **Do** use dashed track (paper dash over the line) and the dashed Sample Tag to mark sample or placeholder content, and say so in words beside it.
 - **Do** set titles and interactive labels in Overpass at 700–900, and frame panels with 3px ink borders.
-- **Do** keep the draw-on-load as the only authored motion. Everything else is a hover or focus state transition with the ease-out curve, and the map is static under reduced motion.
+- **Do** keep authored motion on the map: the draw-on-load and the running trains. Everything else is a hover or focus state transition with the ease-out curve. Trains stay pausable and pause off-screen, and the map is static under reduced motion.
+- **Do** keep the legend's NDA line in the first viewport at 1280x720 and up.
 - **Do** dim rather than hide: unfocused lines drop to 12% and unserved stations to 22%.
 
 ### Don't:
@@ -253,3 +327,5 @@ An inline status mark for stand-in content: 2px dashed border in the current col
 - **Don't** add shadows, decorative gradients, or rounded corners to chrome. The only gradient is the sample dash, and circles are stations.
 - **Don't** attach a kicker or eyebrow label to a heading; only the line roundel may lead a title.
 - **Don't** introduce a second typeface or a color outside ink, paper, and the line palette.
+- **Don't** add scroll-triggered entrances or motion outside the map.
+- **Don't** route a line through stations it does not serve. The map is a factual diagram; Line S stops only where the site really runs.

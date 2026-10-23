@@ -1219,7 +1219,7 @@ a {
 }
 
 .spec dt {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 800;
   color: var(--ink-2);
 }
@@ -1314,7 +1314,6 @@ a {
   .legend {
     margin: 0;
     padding: 18px 20px;
-    font-size: 1rem;
   }
 
   .hero__hint {

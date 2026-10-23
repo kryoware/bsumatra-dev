@@ -8,9 +8,9 @@ web
 
 ## Stack
 
-Next.js with TypeScript, static export (`output: 'export'`). The owner chose this over an offered Astro recommendation so that the site's own code demonstrates React/Next.js skill. Build output is plain static files that any web server on the homelab can serve.
+Next.js with TypeScript, static export (`output: 'export'`). The owner chose this over an offered Astro recommendation so that the site's own code demonstrates React/Next.js skill. Build output is plain static files.
 
-Hosting: self-hosted on the owner's homelab, served through a CDN or tunnel (e.g. Cloudflare Tunnel) so the home IP stays hidden and the site survives traffic spikes. Domain: `bsumatra.dev` (owned).
+Hosting (confirmed at launch): Cloudflare Workers static assets, deployed with wrangler, so the site never runs on the homelab and visiting it opens no path into the home network. Domain: `bsumatra.dev` (owned).
 
 ## Users
 
@@ -26,7 +26,7 @@ The personal portfolio of Baldwin John Sumatra, a Senior Full Stack Software Eng
 
 ## Positioning
 
-The owner covers both major frontend ecosystems (React/Next.js and Vue/Nuxt), the backend (NestJS, PHP), databases (MySQL, PostgreSQL), and TypeScript throughout, plus hands-on server and network administration through a personal homelab. Outside work hours they also ship a native Android app (Kotlin, Compose Multiplatform) with its own on-device ML classifier. The site itself runs on the homelab, so the infrastructure skill is demonstrated by the hosting, not only claimed.
+The owner covers both major frontend ecosystems (React/Next.js and Vue/Nuxt), the backend (NestJS, PHP), databases (MySQL, PostgreSQL), and TypeScript throughout, plus hands-on server and network administration through a personal homelab. Outside work hours they also ship a native Android app (Kotlin, Compose Multiplatform) with its own on-device ML classifier. The homelab is shown as its own build; the site itself is served from Cloudflare's edge.
 
 ## Operating Context
 
@@ -95,6 +95,6 @@ Not chosen: making the portfolio's own repo a proof piece. Whether the site repo
 
 1. **Proof without disclosure.** Every skill claim points to something a visitor can see or verify (homelab, published repos, specific case-study reasoning), and none of it breaks an NDA.
 2. **Real over decorative.** Use the owner's own photography and real system details. Stand-ins are labeled and tracked until replaced; no invented metrics presented as real.
-3. **The infrastructure is part of the proof.** Self-hosting on the homelab is a claim the site demonstrates by existing.
+3. **The infrastructure is part of the proof.** The homelab is shown through real system details, and the site's own route (static export to Cloudflare Workers) is stated as it really runs, never routed through the homelab.
 4. **Serve the skim and the deep read.** (Inferred, unconfirmed.) A hiring visitor should grasp seniority and stack in seconds; an engineer should be able to go deep.
 5. **A person, not a résumé.** Interests (Gunpla, coffee, gaming, photography) are part of who the owner is and belong on the site.

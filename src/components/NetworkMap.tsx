@@ -84,8 +84,17 @@ function runLine(root: Element, line: Line, i: number): Animation[] {
 export function NetworkMap({ title }: { title: ReactNode }) {
   const [focus, setFocus] = useState<Focus>(null);
   const [trainsPaused, setTrainsPaused] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
   const plate = useRef<HTMLDivElement>(null);
   const syncTrains = useRef(() => {});
+
+  useEffect(() => {
+    const preference = matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReducedMotion(preference.matches);
+    update();
+    preference.addEventListener("change", update);
+    return () => preference.removeEventListener("change", update);
+  }, []);
 
   // On narrow screens the map pans; open it on the dense interchange area, not the empty title corner.
   useEffect(() => {
@@ -105,7 +114,7 @@ export function NetworkMap({ title }: { title: ReactNode }) {
 
   useEffect(() => {
     const el = plate.current;
-    if (!el || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!el || reducedMotion || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const animations = lines.flatMap((line, i) => runLine(el, line, i));
     // Fail open: trains run unless we positively know the map is off-screen or the tab is hidden.
     let visible = true;
@@ -130,7 +139,7 @@ export function NetworkMap({ title }: { title: ReactNode }) {
       syncTrains.current = () => {};
       for (const a of animations) a.cancel();
     };
-  }, []);
+  }, [reducedMotion]);
 
   useEffect(() => syncTrains.current(), [trainsPaused]);
 

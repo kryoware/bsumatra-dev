@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack",
+    "postbuild": "node scripts/flatten-rsc.mjs",
     "start": "npx serve out",
     "typecheck": "tsc --noEmit"
   },

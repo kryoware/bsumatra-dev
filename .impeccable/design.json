@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-22T10:58:35.447Z",
+  "generatedAt": "2026-10-22T19:32:49.396Z",
   "title": "Design System: bsumatra.dev",
   "extensions": {
     "colorMeta": {
@@ -18,7 +18,8 @@
           "oklch(72.1% 0.006 271.1)",
           "oklch(83.6% 0.005 271.1)",
           "oklch(95.0% 0.004 271.1)"
-        ]
+        ],
+        "dark": "#f0f0eb"
       },
       "ink-raised": {
         "role": "primary",
@@ -34,7 +35,8 @@
           "oklch(72.1% 0.011 271.0)",
           "oklch(83.6% 0.009 271.0)",
           "oklch(95.0% 0.006 271.0)"
-        ]
+        ],
+        "dark": "#d4d6d0"
       },
       "line-p-blue": {
         "role": "secondary",
@@ -146,7 +148,8 @@
           "oklch(72.1% 0.004 106.5)",
           "oklch(83.6% 0.003 106.5)",
           "oklch(95.0% 0.002 106.5)"
-        ]
+        ],
+        "dark": "#121416"
       },
       "enamel-white": {
         "role": "neutral",
@@ -162,7 +165,8 @@
           "oklch(72.1% 0.000 89.9)",
           "oklch(83.6% 0.000 89.9)",
           "oklch(95.0% 0.000 89.9)"
-        ]
+        ],
+        "dark": "#1b1e23"
       },
       "ink-2": {
         "role": "neutral",
@@ -178,7 +182,8 @@
           "oklch(72.1% 0.012 267.2)",
           "oklch(83.6% 0.011 267.2)",
           "oklch(95.0% 0.007 267.2)"
-        ]
+        ],
+        "dark": "#b9bec6"
       },
       "ink-3": {
         "role": "neutral",
@@ -194,7 +199,8 @@
           "oklch(72.1% 0.011 267.3)",
           "oklch(83.6% 0.010 267.3)",
           "oklch(95.0% 0.007 267.3)"
-        ]
+        ],
+        "dark": "#969da7"
       },
       "rule": {
         "role": "neutral",
@@ -210,7 +216,8 @@
           "oklch(72.1% 0.007 115.7)",
           "oklch(83.6% 0.006 115.7)",
           "oklch(95.0% 0.004 115.7)"
-        ]
+        ],
+        "dark": "#444a53"
       },
       "paper-on-ink": {
         "role": "neutral",
@@ -226,6 +233,53 @@
           "oklch(72.1% 0.007 124.5)",
           "oklch(83.6% 0.006 124.5)",
           "oklch(95.0% 0.004 124.5)"
+        ]
+      },
+      "paper-2": {
+        "role": "neutral",
+        "displayName": "Worn Enamel",
+        "canonical": "#e9eae6",
+        "tonalRamp": [
+          "oklch(15.0% 0.001 106.5)",
+          "oklch(26.4% 0.002 106.5)",
+          "oklch(37.9% 0.004 106.5)",
+          "oklch(49.3% 0.004 106.5)",
+          "oklch(60.7% 0.004 106.5)",
+          "oklch(72.1% 0.004 106.5)",
+          "oklch(83.6% 0.003 106.5)",
+          "oklch(95.0% 0.002 106.5)"
+        ],
+        "dark": "#25282d"
+      },
+      "sign-bg": {
+        "role": "neutral",
+        "displayName": "Sign Panel",
+        "canonical": "#16171a",
+        "tonalRamp": [
+          "oklch(15.0% 0.002 271.1)",
+          "oklch(26.4% 0.004 271.1)",
+          "oklch(37.9% 0.005 271.1)",
+          "oklch(49.3% 0.006 271.1)",
+          "oklch(60.7% 0.006 271.1)",
+          "oklch(72.1% 0.006 271.1)",
+          "oklch(83.6% 0.005 271.1)",
+          "oklch(95.0% 0.004 271.1)"
+        ],
+        "dark": "#202329"
+      },
+      "sign-ink": {
+        "role": "neutral",
+        "displayName": "Sign Lettering",
+        "canonical": "#f6f6f3",
+        "tonalRamp": [
+          "oklch(15.0% 0.001 106.5)",
+          "oklch(26.4% 0.002 106.5)",
+          "oklch(37.9% 0.004 106.5)",
+          "oklch(49.3% 0.004 106.5)",
+          "oklch(60.7% 0.004 106.5)",
+          "oklch(72.1% 0.004 106.5)",
+          "oklch(83.6% 0.003 106.5)",
+          "oklch(95.0% 0.002 106.5)"
         ]
       }
     },
@@ -253,6 +307,34 @@
       "station-label": {
         "displayName": "Station label",
         "purpose": "Map station names with a 5px paper stroke halo; 850 for You are here."
+      },
+      "page-title": {
+        "displayName": "Page title",
+        "purpose": "Detail-page and 404 titles."
+      },
+      "prose-title": {
+        "displayName": "Prose title",
+        "purpose": "Section heads inside detail-page prose."
+      },
+      "page-lede": {
+        "displayName": "Page lede",
+        "purpose": "Detail-page ledes and case-study outcomes."
+      },
+      "lede-sm": {
+        "displayName": "Lede small",
+        "purpose": "Route summaries, the terminus address, and closing lines."
+      },
+      "sign": {
+        "displayName": "Sign",
+        "purpose": "Masthead name and board title bars."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Fine print, footer, mobile map hint, small button."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Sample Tag only; uppercase."
       }
     },
     "shadows": [],
@@ -265,7 +347,7 @@
       {
         "name": "line-draw",
         "value": "1.2s ease-out, delay calc(var(--i) * 110ms + 120ms)",
-        "purpose": "The one authored moment: tracks draw along their routes in legend order on first load; static under reduced motion."
+        "purpose": "First authored moment: tracks draw along their routes in legend order on first load; static under reduced motion."
       },
       {
         "name": "network-appear",
@@ -281,6 +363,21 @@
         "name": "plate-state",
         "value": "background-color 0.2s ease-out, transform 0.15s ease-out",
         "purpose": "Button hover shift and 1px press."
+      },
+      {
+        "name": "train-run",
+        "value": "60 viewBox units/s, 1.4s dwell per station, start 1.8s + 0.35s per line, infinite out-and-back",
+        "purpose": "Second authored moment: a carriage rides each line. Pausable from the legend, paused off-screen or in a hidden tab, absent under reduced motion."
+      },
+      {
+        "name": "station-pulse",
+        "value": "1.1s ring, opacity 0.9 to 0, scale 1 to 2.6, ease-out, on the train's timeline",
+        "purpose": "A ring in the line color fires as a train arrives at a station."
+      },
+      {
+        "name": "theme-change",
+        "value": "background-color, color, border-color 0.2s ease-out",
+        "purpose": "Light/dark switch on page chrome; immediate under reduced motion."
       }
     ],
     "breakpoints": [
@@ -299,6 +396,10 @@
       {
         "name": "map-pan",
         "value": "max-width: 1099px"
+      },
+      {
+        "name": "legend-dense",
+        "value": "min-width: 1100px and (pointer: fine)"
       }
     ]
   },
@@ -315,9 +416,17 @@
       "name": "Inverse Button",
       "kind": "button",
       "refersTo": "button-inverse",
-      "description": "Paper plate on the ink terminus block.",
+      "description": "Sign Lettering plate on the dark sign panel (terminus).",
       "html": "<div class=\"ds-ink\"><a class=\"ds-btn-inv\" href=\"#\">Email me</a></div>",
-      "css": ":host { --paper:#f6f6f3; --ink:#16171a; --ink-2:#45484f; --ink-3:#6b6e75; --rule:#d4d5d0; --ease-out:cubic-bezier(0.16,1,0.3,1); } .ds-ink { background:var(--ink); padding:32px; } .ds-btn-inv { display:inline-flex; background:var(--paper); color:var(--ink); font-family: var(--font-sans, Overpass), system-ui, sans-serif; font-weight:800; font-size:17px; text-decoration:none; padding:0.85em 1.6em; border-radius:0; transition: background-color 0.2s var(--ease-out), transform 0.15s var(--ease-out); } .ds-btn-inv:hover { background:#fff; } .ds-btn-inv:active { transform:translateY(1px); } .ds-btn-inv:focus-visible { outline:3px solid var(--paper); outline-offset:3px; }"
+      "css": ":host { --paper:#f6f6f3; --ink:#16171a; --ink-2:#45484f; --ink-3:#6b6e75; --rule:#d4d5d0; --ease-out:cubic-bezier(0.16,1,0.3,1); } .ds-ink { background:var(--ink); padding:32px; } .ds-btn-inv { display:inline-flex; background:var(--paper); color:var(--ink); font-family: var(--font-sans, Overpass), system-ui, sans-serif; font-weight:800; font-size:17px; text-decoration:none; padding:0.85em 1.6em; border-radius:0; transition: background-color 0.2s var(--ease-out), transform 0.15s var(--ease-out); } .ds-btn-inv:hover { background:#c9cbc6; } .ds-btn-inv:active { transform:translateY(1px); } .ds-btn-inv:focus-visible { outline:3px solid var(--paper); outline-offset:3px; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary control that must not compete with Email: the legend's train control and the theme toggle.",
+      "html": "<button class=\"ds-btn-outline\" type=\"button\">Pause trains</button>",
+      "css": ":host { --paper:#f6f6f3; --paper-2:#e9eae6; --ink:#16171a; --ease-out:cubic-bezier(0.16,1,0.3,1); } .ds-btn-outline { min-height:32px; padding:0.3em 0.75em; border:2px solid var(--ink); border-radius:0; background:var(--paper); color:var(--ink); font-family: var(--font-sans, Overpass), system-ui, sans-serif; font-size:12px; font-weight:800; cursor:pointer; transition:background-color 0.2s var(--ease-out); } .ds-btn-outline:hover { background:var(--paper-2); } .ds-btn-outline:focus-visible { outline:3px solid var(--ink); outline-offset:3px; }"
     },
     {
       "name": "Roundel",
@@ -344,9 +453,9 @@
     {
       "name": "Legend",
       "kind": "nav",
-      "description": "Legend panel whose line rows double as navigation; rows dim with the map when another line is focused.",
-      "html": "<nav class=\"ds-legend\"><div class=\"ds-legend-head\">Lines</div><a class=\"ds-row\" href=\"#\"><span class=\"ds-r\" style=\"--line:#7443e6\">N</span><span class=\"ds-n\">Notifly</span><span class=\"ds-k\">Android app</span></a><a class=\"ds-row\" href=\"#\"><span class=\"ds-r\" style=\"--line:#cf2e26\">H</span><span class=\"ds-n\">Homelab</span><span class=\"ds-k\">Proxmox</span></a></nav>",
-      "css": ":host { --paper:#f6f6f3; --ink:#16171a; --ink-2:#45484f; --ink-3:#6b6e75; --rule:#d4d5d0; --ease-out:cubic-bezier(0.16,1,0.3,1); } .ds-legend { width:240px; padding:14px 16px; background:var(--paper); border:3px solid var(--ink); font-family: var(--font-sans, Overpass), system-ui, sans-serif; font-size:14px; line-height:1.3; color:var(--ink); } .ds-legend-head { font-size:1.25em; font-weight:900; margin-bottom:0.5em; } .ds-row { display:grid; grid-template-columns:auto 1fr; column-gap:0.7em; align-items:center; padding:0.32em 0; color:inherit; text-decoration:none; transition:opacity 0.3s var(--ease-out); } .ds-row:focus-visible { outline: 3px solid var(--ink, #16171a); outline-offset: 3px; } .ds-r { grid-row:span 2; display:inline-grid; place-items:center; width:24px; height:24px; border-radius:50%; border:4px solid var(--line); background:var(--paper); box-sizing:border-box; font-weight:900; font-size:10px; } .ds-n { font-weight:800; } .ds-row:hover .ds-n { text-decoration:underline; text-decoration-thickness:2px; } .ds-k { color:var(--ink-2); font-size:0.88em; }"
+      "description": "Legend panel: head row pairs the title with the train control; line rows double as navigation and dim with the map.",
+      "html": "<nav class=\"ds-legend\"><div class=\"ds-legend-top\"><div class=\"ds-legend-top\"><div class=\"ds-legend-top\"><div class=\"ds-legend-head\">Lines</div><button class=\"ds-legend-motion\" type=\"button\">Pause trains</button></div><button class=\"ds-legend-motion\" type=\"button\">Pause trains</button></div><button class=\"ds-legend-motion\" type=\"button\">Pause trains</button></div><a class=\"ds-row\" href=\"#\"><span class=\"ds-r\" style=\"--line:#7443e6\">N</span><span class=\"ds-n\">Notifly</span><span class=\"ds-k\">Android app</span></a><a class=\"ds-row\" href=\"#\"><span class=\"ds-r\" style=\"--line:#cf2e26\">H</span><span class=\"ds-n\">Homelab</span><span class=\"ds-k\">Proxmox</span></a></nav>",
+      "css": ":host { --paper:#f6f6f3; --ink:#16171a; --ink-2:#45484f; --ink-3:#6b6e75; --rule:#d4d5d0; --ease-out:cubic-bezier(0.16,1,0.3,1); } .ds-legend { width:240px; padding:14px 16px; background:var(--paper); border:3px solid var(--ink); font-family: var(--font-sans, Overpass), system-ui, sans-serif; font-size:14px; line-height:1.3; color:var(--ink); } .ds-legend-top { display:flex; align-items:center; justify-content:space-between; gap:0.6em; margin-bottom:0.4em; } .ds-legend-head { font-size:1.25em; font-weight:900; } .ds-legend-motion { min-height:32px; padding:0.3em 0.75em; border:2px solid var(--ink); background:var(--paper); color:var(--ink); font:inherit; font-size:12px; font-weight:800; cursor:pointer; } .ds-row { display:grid; grid-template-columns:auto 1fr; column-gap:0.7em; align-items:center; padding:0.32em 0; color:inherit; text-decoration:none; transition:opacity 0.3s var(--ease-out); } .ds-row:focus-visible { outline: 3px solid var(--ink, #16171a); outline-offset: 3px; } .ds-r { grid-row:span 2; display:inline-grid; place-items:center; width:24px; height:24px; border-radius:50%; border:4px solid var(--line); background:var(--paper); box-sizing:border-box; font-weight:900; font-size:10px; } .ds-n { font-weight:800; } .ds-row:hover .ds-n { text-decoration:underline; text-decoration-thickness:2px; } .ds-k { color:var(--ink-2); font-size:0.88em; }"
     },
     {
       "name": "Masthead",
@@ -373,13 +482,14 @@
   ],
   "narrative": {
     "northStar": "The Transit Diagram",
-    "overview": "The career is drawn as a rail network. Every build is a line with one saturated color and a letter roundel; every technology is a station; lines cross where skills interchange. The page reads like station signage printed on white enamel: ink-black type in heavy highway-signage weights, square panels, thick ink rules, and nothing that floats. The color comes from the lines, never from the chrome.\n\nDensity follows real transit graphics. The home page opens on a full-width octilinear map with the title panel and legend set into its empty regions. Detail pages pick up the same vocabulary through the strip map, the in-train door diagram: a straight run of stops on the line's color. Surfaces are flat. Hierarchy comes from weight, size, and 3px ink borders, not from shadow or tint.\n\nMotion is authored once. On first load the lines draw along their routes in legend order. After that, everything is a state change: hovering or focusing a line dims the rest of the network.",
+    "overview": "The career is drawn as a rail network. Every build is a line with one saturated color and a letter roundel; every technology is a station; lines cross where skills interchange. The page reads like station signage printed on white enamel: ink-black type in heavy highway-signage weights, square panels, thick ink rules, and nothing that floats. The color comes from the lines, never from the chrome.\n\nDensity follows real transit graphics. The home page opens on a full-width octilinear map with the title panel and legend set into its empty regions. Detail pages pick up the same vocabulary through the strip map, the in-train door diagram: a straight run of stops on the line's color. Surfaces are flat. Hierarchy comes from weight, size, and 3px ink borders, not from shadow or tint.\n\nMotion has two authored moments, both on the map. On first load the lines draw along their routes in legend order. Then the network runs: a small carriage on every line travels out and back, dwelling at each station while a ring in the line color pulses outward. The trains are ambient, pausable from the legend, paused while the map is off-screen or the tab is hidden, and absent under reduced motion. Everything else is a state change: hovering or focusing a line dims the rest of the network.",
     "keyCharacteristics": [
       "White enamel ground, ink type, six line colors as the only chroma.",
       "Overpass at 800–900 for every title, regular for body, tabular numerals throughout.",
       "Square signage panels with 3px ink borders; circles only for roundels, stops, and interchanges.",
       "Dashed track means \"sample\", always and only.",
-      "Flat: no shadows anywhere."
+      "Flat: no shadows anywhere.",
+      "A light and a dark theme of the same signage; the route colors never change."
     ],
     "rules": [
       {
@@ -395,6 +505,11 @@
       {
         "name": "The Heavy Signage Rule",
         "body": "Every title and every interactive label is 700 or heavier: 900 for titles; 800 for buttons, legend names, strip stop names, back links, and text links; 700 for masthead links. Weight carries the hierarchy, and color does not.",
+        "section": "typography"
+      },
+      {
+        "name": "The 12px Floor Rule",
+        "body": "No HTML text drops below 12px. Container-scaled legend text uses `max(12px, ...)` so it holds the floor on short laptop screens. Map labels are SVG and scale with the plate (about 11.7px on the 940px phone plate); the legend repeats every line name as HTML text.",
         "section": "typography"
       },
       {
@@ -422,7 +537,8 @@
       "**Do** give every build its own line color, letter roundel, and `--line` scope, and carry that color into every element that belongs to it.",
       "**Do** use dashed track (paper dash over the line) and the dashed Sample Tag to mark sample or placeholder content, and say so in words beside it.",
       "**Do** set titles and interactive labels in Overpass at 700–900, and frame panels with 3px ink borders.",
-      "**Do** keep the draw-on-load as the only authored motion. Everything else is a hover or focus state transition with the ease-out curve, and the map is static under reduced motion.",
+      "**Do** keep authored motion on the map: the draw-on-load and the running trains. Everything else is a hover or focus state transition with the ease-out curve. Trains stay pausable and pause off-screen, and the map is static under reduced motion.",
+      "**Do** keep the legend's NDA line in the first viewport at 1280x720 and up.",
       "**Do** dim rather than hide: unfocused lines drop to 12% and unserved stations to 22%."
     ],
     "donts": [
@@ -430,7 +546,9 @@
       "**Don't** use dashing as decoration on a real line or panel. Dashed means sample.",
       "**Don't** add shadows, decorative gradients, or rounded corners to chrome. The only gradient is the sample dash, and circles are stations.",
       "**Don't** attach a kicker or eyebrow label to a heading; only the line roundel may lead a title.",
-      "**Don't** introduce a second typeface or a color outside ink, paper, and the line palette."
+      "**Don't** introduce a second typeface or a color outside ink, paper, and the line palette.",
+      "**Don't** add scroll-triggered entrances or motion outside the map.",
+      "**Don't** route a line through stations it does not serve. The map is a factual diagram; Line S stops only where the site really runs."
     ]
   }
 }
