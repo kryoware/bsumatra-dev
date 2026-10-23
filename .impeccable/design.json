@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-22T19:32:49.396Z",
+  "generatedAt": "2026-10-23T02:23:14.589Z",
   "title": "Design System: bsumatra.dev",
   "extensions": {
     "colorMeta": {
@@ -335,6 +335,10 @@
       "label": {
         "displayName": "Label",
         "purpose": "Sample Tag only; uppercase."
+      },
+      "legend-mobile": {
+        "displayName": "Mobile legend",
+        "purpose": "Readable line names below the map on mobile and unfolded screens."
       }
     },
     "shadows": [],
@@ -383,23 +387,35 @@
     "breakpoints": [
       {
         "name": "masthead-compact",
-        "value": "max-width: 640px"
+        "value": "site container: max-width: 860px"
       },
       {
         "name": "strip-horizontal",
-        "value": "min-width: 720px"
+        "value": "site container: min-width: 860px"
       },
       {
         "name": "single-column",
-        "value": "max-width: 860px"
+        "value": "site container: max-width: 860px"
+      },
+      {
+        "name": "board-and-spec-stack",
+        "value": "site container: max-width: 640px"
       },
       {
         "name": "map-pan",
-        "value": "max-width: 1099px"
+        "value": "site container: max-width: 1099px"
+      },
+      {
+        "name": "legend-two-columns",
+        "value": "site container: 640px through 1099px"
       },
       {
         "name": "legend-dense",
-        "value": "min-width: 1100px and (pointer: fine)"
+        "value": "site container: min-width: 1100px; pointer: fine"
+      },
+      {
+        "name": "fold-reading-pane",
+        "value": "horizontal-viewport-segments: 2; first viewport segment"
       }
     ]
   },
@@ -410,7 +426,7 @@
       "refersTo": "button-primary",
       "description": "Ink signage plate for the one action: Email.",
       "html": "<a class=\"ds-btn\" href=\"#\">Email me</a>",
-      "css": ":host { --paper:#f6f6f3; --ink:#16171a; --ink-2:#45484f; --ink-3:#6b6e75; --rule:#d4d5d0; --ease-out:cubic-bezier(0.16,1,0.3,1); } .ds-btn { display:inline-flex; align-items:center; justify-content:center; background:var(--ink); color:var(--paper); font-family: var(--font-sans, Overpass), system-ui, sans-serif; font-weight:800; font-size:17px; text-decoration:none; padding:0.85em 1.6em; white-space:nowrap; border-radius:0; transition: background-color 0.2s var(--ease-out), transform 0.15s var(--ease-out); } .ds-btn:hover { background:#2d2f35; } .ds-btn:active { transform:translateY(1px); } .ds-btn:focus-visible { outline: 3px solid var(--ink, #16171a); outline-offset: 3px; }"
+      "css": ":host { --paper:#f6f6f3; --ink:#16171a; --ink-2:#45484f; --ink-3:#6b6e75; --rule:#d4d5d0; --ease-out:cubic-bezier(0.16,1,0.3,1); } .ds-btn { display:inline-flex; align-items:center; justify-content:center; background:var(--ink); color:var(--paper); font-family: var(--font-sans, Overpass), system-ui, sans-serif; font-weight:800; font-size:17px; text-decoration:none; padding:0.85em 1.6em; text-align:center; border-radius:0; transition: background-color 0.2s var(--ease-out), transform 0.15s var(--ease-out); } .ds-btn:hover { background:#2d2f35; } .ds-btn:active { transform:translateY(1px); } .ds-btn:focus-visible { outline: 3px solid var(--ink, #16171a); outline-offset: 3px; }"
     },
     {
       "name": "Inverse Button",
@@ -460,9 +476,9 @@
     {
       "name": "Masthead",
       "kind": "nav",
-      "description": "64px bar under a 3px ink rule: ring mark, 700 links, small Email plate.",
+      "description": "Minimum 64px bar; project links remain visible in a second row on compact layouts, with wrapping theme and Email controls.",
       "html": "<header class=\"ds-mast\"><a class=\"ds-mark\" href=\"#\"><span class=\"ds-ring\"></span>bsumatra.dev</a><nav class=\"ds-nav\"><a class=\"ds-link\" href=\"#\">Client work</a><a class=\"ds-link\" href=\"#\">Notifly</a><a class=\"ds-sm\" href=\"#\">Email me</a></nav></header>",
-      "css": ":host { --paper:#f6f6f3; --ink:#16171a; --ink-2:#45484f; --ink-3:#6b6e75; --rule:#d4d5d0; --ease-out:cubic-bezier(0.16,1,0.3,1); } .ds-mast { height:64px; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:0 24px; border-bottom:3px solid var(--ink); background:var(--paper); font-family: var(--font-sans, Overpass), system-ui, sans-serif; color:var(--ink); } .ds-mark { display:inline-flex; align-items:center; gap:10px; font-weight:900; font-size:1.1rem; letter-spacing:-0.01em; color:inherit; text-decoration:none; } .ds-ring { width:20px; height:20px; border-radius:50%; border:5px solid var(--ink); box-sizing:border-box; } .ds-nav { display:flex; align-items:center; gap:28px; } .ds-link { font-weight:700; color:inherit; text-decoration:none; } .ds-link:hover { text-decoration:underline; } .ds-sm { background:var(--ink); color:var(--paper); font-weight:800; font-size:0.9rem; padding:0.5em 1em; text-decoration:none; } .ds-link:focus-visible, .ds-mark:focus-visible, .ds-sm:focus-visible { outline: 3px solid var(--ink, #16171a); outline-offset: 3px; }"
+      "css": ":host { --paper:#f6f6f3; --ink:#16171a; --ink-2:#45484f; --ink-3:#6b6e75; --rule:#d4d5d0; --ease-out:cubic-bezier(0.16,1,0.3,1); } .ds-mast { min-height:64px; flex-wrap:wrap; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:8px 24px; border-bottom:3px solid var(--ink); background:var(--paper); font-family: var(--font-sans, Overpass), system-ui, sans-serif; color:var(--ink); } .ds-mark { display:inline-flex; align-items:center; gap:10px; font-weight:900; font-size:1.1rem; letter-spacing:-0.01em; color:inherit; text-decoration:none; } .ds-ring { width:20px; height:20px; border-radius:50%; border:5px solid var(--ink); box-sizing:border-box; } .ds-nav { display:flex; align-items:center; gap:28px; } .ds-link { font-weight:700; color:inherit; text-decoration:none; } .ds-link:hover { text-decoration:underline; } .ds-sm { background:var(--ink); color:var(--paper); font-weight:800; font-size:0.9rem; padding:0.5em 1em; text-decoration:none; } .ds-link:focus-visible, .ds-mark:focus-visible, .ds-sm:focus-visible { outline: 3px solid var(--ink, #16171a); outline-offset: 3px; } @media(max-width:860px) { .ds-nav { flex-wrap:wrap; gap:12px; } }"
     },
     {
       "name": "Board",

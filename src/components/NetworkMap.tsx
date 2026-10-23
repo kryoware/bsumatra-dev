@@ -287,11 +287,7 @@ export function NetworkMap({ title }: { title: ReactNode }) {
               </li>
             ))}
           </ul>
-          <p className="legend__key">
-            <span className="legend__swatch" aria-hidden="true" />
-            Sample route: a placeholder until the real write-up is in.
-          </p>
-          <p className="legend__nda">Client work runs under NDA. Stack and scale shown, names withheld.</p>
+          <p className="legend__nda">Routes connect professional experience, selected technologies and personal projects.</p>
         </nav>
       </div>
     </section>

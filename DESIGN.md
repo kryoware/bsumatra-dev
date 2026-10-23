@@ -92,6 +92,11 @@ typography:
     fontFamily: "Overpass, system-ui, sans-serif"
     fontSize: "15px"
     fontWeight: 650
+  legend-mobile:
+    fontFamily: "Overpass, system-ui, sans-serif"
+    fontSize: "1rem"
+    fontWeight: 800
+    lineHeight: 1.3
 rounded:
   none: "0"
   full: "50%"
@@ -252,9 +257,13 @@ The six route colors. Each belongs to one line and travels with it everywhere: t
 
 ## Layout
 
-The home hero is a 1200×680 map viewBox inside a container-query frame that is sized to fit the viewport below the 64px masthead. The title panel (viewBox x 32 to 520, y 32 to 340) and the legend (x 960 to 1180, from y 270) are placed into map regions that have no track. The legend, with its NDA line, must sit inside the first viewport down to 1280x720; with a fine pointer its rows tighten to 36px (touch keeps 44px) to make that fit. Below 1100px the frame unstacks: title and Email first, then the map as a horizontally pannable 940px plate between 1px rules, then the legend as tappable rows.
+The home hero is a 1200×680 map viewBox inside a container-query frame sized to fit the viewport below the masthead. The frame stops shrinking at 1050px, capped by the available width, so short landscape windows scroll vertically instead of miniaturizing the diagram. The title panel (viewBox x 32 to 520, y 32 to 340) and the legend (x 960 to 1180, from y 270) occupy regions without track. The legend and its NDA line fit the first viewport at 1280×720; fine-pointer rows tighten to 36px while touch rows retain 44px. Below 1100px of usable width, title and Email lead a horizontally pannable 940px map, then a full-width legend with readable HTML labels. Legend links use two columns from 640px through 1099px.
 
-Sections share a 1240px container with the fluid gutter and section-top rhythm. Detail pages narrow to 980px. Strip maps run vertically by default and turn horizontal from 720px. Two-column blocks (feature, split prose) collapse below 860px. Two-column boards and spec lists collapse below 640px, where the masthead also drops its text links and keeps only Email.
+Sections share a 1240px container with the fluid gutter and section-top rhythm. Detail pages narrow to 980px. Strip maps run vertically by default and turn horizontal from 860px. Feature and split-prose layouts collapse at 860px; boards and spec lists collapse at 640px. The terminus uses a 24px padding floor so its heading and contact details fit a narrow cover screen.
+
+Responsive breakpoints measure the named `site` content container, not the device width. Safe-area insets pad the body, and viewport-fit enables them without restricting zoom. When a browser reports two horizontal viewport segments, the page stays in the first segment; the same container queries then adapt to that pane. Browsers without segment information retain the fluid full-width layout. There is no separate foldable component or device detection. Vertical folds retain ordinary document scrolling.
+
+**Reflow and touch.** Header content can wrap and grow; project links stay visible at every width. Buttons, headings, and long unbroken text wrap. Back links, standalone text links, footer links, and next-line links have at least 44px height. Inline links inside prose retain normal text flow. The map alone may scroll horizontally; page content must fit at 280px and at enlarged text sizes.
 
 **The Empty Region Rule.** Panels over the map sit only in regions that have no track or label. Map geometry is laid out around them, never under them.
 
@@ -277,7 +286,7 @@ Borders come in three weights: 3px ink for panels and section rules, 2px dashed 
 ### Buttons
 Signage plates: solid, square, heavy.
 - **Shape:** square corners (0).
-- **Primary:** ink plate, paper text, 800 weight, padding 0.85em 1.6em, no wrapping.
+- **Primary:** ink plate, paper text, 800 weight, padding 0.85em 1.6em, centered text that can wrap, minimum 44px height.
 - **Hover / Focus:** background shifts to Raised Ink with a 0.2s ease-out. Active presses down 1px. Focus shows a 3px ink outline with 3px offset.
 - **Inverse:** paper plate on ink (terminus). Hover lifts to Bright Enamel, and the focus outline turns paper.
 - **Small:** padding 0.5em 1em at 0.9rem (masthead Email).
@@ -287,7 +296,7 @@ Signage plates: solid, square, heavy.
 The line's identity mark: a paper disc with a thick ring in the line color and the line letter at 900. Default 28px, large 56px. It sits beside route titles, the legend rows, the board title, detail-page heads, and next-line links. It is always aria-hidden, because the line name is always present as text.
 
 ### Strip Map (signature)
-The in-train door diagram. An ordered list of stops on an 8px spine in the line color, with 20px paper dots ringed in ink. Stop names are 800; notes are Slate at 0.92rem. Branches leave as a short Pewter spur. It is vertical by default and horizontal from 720px. On sample lines a dashed paper stripe runs down the spine.
+The in-train door diagram. An ordered list of stops on an 8px spine in the line color, with 20px paper dots ringed in ink. Stop names are 800; notes are Slate at 0.92rem. Branches leave as a short Pewter spur. It is vertical by default and horizontal from 860px of usable content width, leaving long technology names room on unfolded screens. On sample lines a dashed paper stripe runs down the spine.
 
 ### Network Map (signature)
 Octilinear SVG. Tracks are 9px with round caps in the line color, widening to 14px on keyboard focus. Sample lines overlay a 3px paper dash (9/9). Hovering or focusing a line or legend row dims other lines to 12% and unserved stations to 22%. Hovering a station lights every line through it. On first load the tracks draw in legend order (1.2s, 110ms stagger, exponential ease-out). After 1.8s the trains start, staggered 0.35s per line: a 24x12 paper carriage with an ink outline and windows in the line color rides the track at 60 units per second, dwells 1.4s at every station, and fires a 1.1s ring pulse in the line color as it arrives. Trains dim with their line, pause off-screen or in a hidden tab, and stop when the legend control is pressed. Under reduced motion the map is static and the control is hidden. The map plate takes a tab stop only when it pans (below 1100px). Line S runs TypeScript, Next.js, Cloudflare, then "You are here"; it crosses Line H without a station because the site does not run on the homelab.
@@ -305,7 +314,7 @@ An inline status mark for stand-in content: 2px dashed border in the current col
 - **Terminus:** a full ink block with fluid padding, a display title, Fog on Ink body, and an inverse button.
 
 ### Navigation
-- **Masthead:** 64px bar with a 3px ink bottom rule. The mark is a 5px-ring ink circle plus the name at 900. Links are 700 with an underline on hover. The small Email button is always present, and the text links hide below 640px.
+- **Masthead:** minimum 64px bar with a 3px ink bottom rule. The mark is a 5px-ring ink circle plus the name at 900. Links are 700 with an underline on hover. At 860px and below, the project links occupy a full row beneath the mark and theme/Email controls. At very narrow widths or enlarged text, the top controls wrap too; no navigation is hidden.
 - **Text link:** 800 weight with a 3px underline in the line color (ink outside a line), turning ink on hover.
 - **Next line:** a footer bar on detail pages under a 3px ink rule, with a roundel and the next title.
 - **Not on the map (404):** a detail-page layout with an "All lines" back link, a page title, a page lede, and links back to the map and Email. No roundel, because no line serves it.
