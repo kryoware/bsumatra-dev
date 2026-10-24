@@ -30,3 +30,12 @@
 - Screenshot inspection: the longer Experience navigation label wraps awkwardly at very narrow widths, and a standalone text-link adds excessive hero spacing. Use Work in navigation and group the hero actions compactly.
 - Wait for map entrance animations before screenshots so intermediate frames are not mistaken for missing map content.
 - Follow-up source verification caught encoding damage to separator and copyright characters introduced by Windows' default text decoding. Restored UTF-8 text and added a browser assertion for encoding artifacts.
+
+
+## Final validation — 2026-10-24
+- Production build/static export and TypeScript check passed after normalizing doubled CR line endings in the homepage and root layout. The cleanup has no semantic source changes.
+- Installed Zen 1.23.4b (Gecko 158.0.1), using an isolated headless Selenium profile, passed all 29 assertions against the fresh static export.
+- Checks cover employment/freelance/education content, supplied email links, removal of fictional sample copy, encoding, all three work routes through client navigation and direct refresh, Notifly and homelab routes, theme persistence, train pause/resume, keyboard skip navigation, and reduced motion.
+- Viewport widths 1440, 768, 390 and 320px passed document-overflow and visible work-shortcut assertions.
+- Evidence: `C:/Users/kryoware/AppData/Local/Temp/portfolio-zen-evidence/results.json` and desktop/mobile PNGs alongside it. These artifacts stay local.
+- This supersedes the responsive audit's earlier notes about untested Firefox-family rendering and remaining sample work/contact placeholders. Physical devices, Safari, screen readers and performance profiling remain untested.
