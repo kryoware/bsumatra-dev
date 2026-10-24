@@ -60,7 +60,36 @@ try:
     check('\u00c2' not in body and '\ufffd' not in body, 'No text encoding artifacts')
     check('ELMO Software' in body and 'GRUPBAI' in body and 'Hero Teams' not in body, 'Updated employer and freelance content render')
     check('Holy Child College' not in body and 'I speak English and Filipino' not in body, 'Education and spoken-language copy removed')
-    check([el.text for el in driver.find_elements(By.CSS_SELECTOR, '.route .location-tag')] == ['Sydney · Remote', 'Taguig · Remote', 'Davao'], 'Company location tags render')
+    entries = driver.find_elements(By.CSS_SELECTOR, '.career__stop')
+    check(len(entries) == 6 and not driver.find_elements(By.CSS_SELECTOR, '.career__entry[open]'), 'All six timeline entries start collapsed')
+    check([el.find_element(By.CSS_SELECTOR, '.career__name').text for el in entries] == ['ELMO Software', 'Yondu', 'Umá · iFarms', 'Futuristech Inc.', 'BAI · GRUPBAI Logistics', 'Retail & queueing systems'], 'Company and freelance entries follow reverse chronology')
+    check('Jan – Mar 2021' in entries[2].text and 'Freelance' in entries[2].text, 'Dated 2021 freelance engagement sits between Yondu and Futuristech')
+    check(all('alongside Futuristech' in entry.text for entry in entries[4:]), 'Older freelance projects disclose concurrent employment while collapsed')
+    check(all(el.find_element(By.CSS_SELECTOR, '.career__brief').is_displayed() for el in entries), 'Every collapsed entry shows a brief summary')
+    check(not driver.find_elements(By.CSS_SELECTOR, '#work .strip, #work .board') and len(driver.find_elements(By.ID, 'freelance')) == 1, 'Homepage uses one timeline without duplicate project boards or stack strips')
+    for entry in driver.find_elements(By.CSS_SELECTOR, '.career__stop[data-kind="company"]'):
+        entry.find_element(By.TAG_NAME, 'summary').click()
+    check([el.text for el in driver.find_elements(By.CSS_SELECTOR, '.career .work-location')] == ['Sydney · Remote', 'Taguig · Remote', 'Davao'], 'Company location metadata render when expanded')
+    check('Promoted from Mid to Senior in 2023.' in entries[0].text, 'Expanded ELMO entry preserves promotion')
+    for entry in driver.find_elements(By.CSS_SELECTOR, '.career__stop[data-kind="company"]'):
+        entry.find_element(By.TAG_NAME, 'summary').click()
+    check(driver.execute_script("return [...document.querySelectorAll('.meta-separator')].filter(el=>el.getClientRects().length).every(el=>el.getBoundingClientRect().width>=parseFloat(getComputedStyle(el).fontSize)*1.3) && document.querySelectorAll('.career__name .meta-separator').length===2"), 'Visible metadata and project-name separators have clear spacing')
+    for entry in driver.find_elements(By.CSS_SELECTOR, '.career__stop[data-kind="freelance"]'):
+        target = entry.get_attribute('id')
+        driver.get(args.url + '/#' + target)
+        entry = driver.find_element(By.ID, target)
+        summary = entry.find_element(By.TAG_NAME, 'summary')
+        summary.click()
+        check(entry.find_element(By.CSS_SELECTOR, '.career__body').is_displayed() and driver.current_url.endswith('#' + target), f'{target} anchor and disclosure reach project details')
+        summary.click()
+    summary = driver.find_element(By.CSS_SELECTOR, '.career__summary')
+    driver.execute_script('arguments[0].focus()', summary)
+    summary.send_keys(Keys.ENTER)
+    check(driver.find_element(By.CSS_SELECTOR, '.career__entry').get_property('open'), 'Enter expands a timeline entry')
+    summary.send_keys(Keys.SPACE)
+    check(not driver.find_element(By.CSS_SELECTOR, '.career__entry').get_property('open'), 'Space collapses a timeline entry')
+    driver.find_element(By.CSS_SELECTOR, '.career').screenshot(str(evidence / 'zen-desktop-timeline.png'))
+    driver.execute_script('scrollTo(0,0)')
     check('1.2M' not in body and 'These three are samples' not in body, 'Fictional sample copy removed')
     for link in driver.find_elements(By.CSS_SELECTOR, 'a[href^="mailto:"]'):
         check(link.get_attribute('href') == 'mailto:bsumatra.jbsa@gmail.com', 'Contact uses supplied address')
@@ -79,21 +108,8 @@ try:
     settled()
     driver.save_screenshot(str(evidence / 'zen-desktop.png'))
     check(driver.execute_script("const order=[...document.querySelectorAll('[data-track]')].map(el=>el.dataset.track); return order.indexOf('H')>order.indexOf('S') && order.indexOf('D')>order.indexOf('M')"), 'Red renders above brown and green above orange')
-    connector = driver.execute_script("""
-        const link = document.querySelector('.map__connector');
-        const point = id => {
-            const b = document.querySelector(`[data-station="${id}"] circle, [data-station="${id}"] rect`).getBBox();
-            return { x: b.x+b.width/2, y: b.y+b.height/2 };
-        };
-        const start = point(link.dataset.from), end = point(link.dataset.to);
-        const a = link.getPointAtLength(0), b = link.getPointAtLength(link.getTotalLength());
-        const others = [...document.querySelectorAll('.map__station')].filter(el=>!['kotlin','compose','classifier','room'].includes(el.dataset.station));
-        const nearest = Math.min(...others.map(el=>{const p=point(el.dataset.station); return Math.hypot(p.x-start.x,p.y-start.y)}));
-        return Math.hypot(a.x-start.x,a.y-start.y)<0.1 && Math.hypot(b.x-end.x,b.y-end.y)<0.1 &&
-            Math.abs(Math.hypot(end.x-start.x,end.y-start.y)-nearest)<0.1 &&
-            getComputedStyle(link).strokeDasharray !== 'none';
-    """)
-    check(connector, 'Purple dotted connector joins Room to the nearest other station')
+    check(not driver.find_elements(By.CSS_SELECTOR, '.map__connector'), 'Dotted Laravel connector removed')
+    check(driver.execute_script("const a=document.querySelector('[data-station=aws] rect'), r=document.querySelector('[data-station=react] rect'); return a.width.baseVal.value===r.height.baseVal.value && a.height.baseVal.value===r.width.baseVal.value && +a.getAttribute('rx')===+r.getAttribute('rx') && +a.getAttribute('rx')===a.width.baseVal.value/2"), 'AWS is a vertical React capsule with equal corner radii')
     connections = driver.execute_script("""
         const broken = [];
         for (const pulse of document.querySelectorAll('[data-pulse]')) {
@@ -148,13 +164,36 @@ try:
     driver.find_element(By.CSS_SELECTOR, '.theme-toggle').click()
     settled()
     driver.save_screenshot(str(evidence / 'zen-desktop-dark.png'))
+    driver.find_element(By.CSS_SELECTOR, '.career').screenshot(str(evidence / 'zen-desktop-timeline-theme-2.png'))
     check(driver.execute_script("return [...document.querySelectorAll('.map__label')].every(el=>getComputedStyle(el).fill===getComputedStyle(document.body).color)"), 'Skill labels use the theme ink token')
     driver.find_element(By.CSS_SELECTOR, '.theme-toggle').click()
     for slug, company, location in [('elmo-software', 'ELMO Software', 'Sydney · Remote'), ('yondu', 'Yondu', 'Taguig · Remote'), ('futuristech', 'Futuristech Inc.', 'Davao')]:
-        driver.find_element(By.CSS_SELECTOR, f'.route__title a[href="/work/{slug}/"]').click()
+        link = driver.find_element(By.CSS_SELECTOR, f'.career__body a[href="/work/{slug}/"]')
+        disclosure = link.find_element(By.XPATH, 'ancestor::details')
+        if not disclosure.get_property('open'):
+            disclosure.find_element(By.TAG_NAME, 'summary').click()
+        link.click()
         wait.until(lambda d: company in d.title)
         check(company in driver.find_element(By.TAG_NAME, 'main').text, f'{slug} client navigation and content')
-        check(driver.find_element(By.CSS_SELECTOR, '.spec .location-tag').text == location, f'{slug} location tag on detail page')
+        check(driver.find_element(By.CSS_SELECTOR, '.spec .work-location').text == location, f'{slug} location metadata on detail page')
+        rows = driver.execute_script('''
+            const strip=document.querySelector('main > .strip--h');
+            const rows=new Map();
+            for(const stop of strip.children){
+                const top=Math.round(stop.getBoundingClientRect().top);
+                rows.set(top,(rows.get(top)||0)+1);
+            }
+            return [...rows.values()];
+        ''')
+        check(rows == ([5] if slug == 'yondu' else [5, 5]), f'{slug} technology rows contain at most five items: {rows}')
+        check(driver.execute_script("return [...document.querySelectorAll('main > .strip--h .strip__stop[data-row-end]')].every(el=>getComputedStyle(el,'::before').display==='none')"), f'{slug} tracks stop at row ends')
+        if slug == 'elmo-software':
+            stages = driver.find_elements(By.CSS_SELECTOR, '.role-history .strip__stop')
+            check(len(stages) == 2 and 'Mid Full Stack' in stages[0].text and 'Jun 2022' in stages[0].text and 'Senior Full Stack' in stages[1].text and '2023' in stages[1].text, 'ELMO promotion has separate dated roles')
+            driver.save_screenshot(str(evidence / 'zen-desktop-elmo.png'))
+            driver.find_element(By.CSS_SELECTOR, '.role-history').screenshot(str(evidence / 'zen-desktop-career.png'))
+        if slug == 'yondu':
+            check('Mid Frontend Developer' in driver.find_element(By.TAG_NAME, 'main').text, 'Yondu role updated')
         check(driver.execute_script('return document.documentElement.scrollWidth <= innerWidth'), f'{slug} stack fits desktop viewport')
         driver.refresh()
         check('My contributions' in driver.find_element(By.TAG_NAME, 'main').text, f'{slug} direct static route')
@@ -163,22 +202,37 @@ try:
     for path in ['/notifly/', '/homelab/']:
         driver.get(args.url + path)
         check(len(driver.find_elements(By.TAG_NAME, 'h1')) == 1, f'{path} remains available')
+        check(driver.execute_script("const strips=[...document.querySelectorAll('.strip--h')];return strips.every(strip=>{const rows=new Map();for(const el of strip.children){const top=Math.round(el.getBoundingClientRect().top);rows.set(top,(rows.get(top)||0)+1)}return Math.max(...rows.values())<=5})"), f'{path} horizontal strips keep at most five items per row')
     for width in [1440, 768, 390, 320]:
         viewport(width, 900)
         driver.get(args.url)
-        wait.until(lambda d: len(d.find_elements(By.CSS_SELECTOR, '.route')) == 3)
+        wait.until(lambda d: len(d.find_elements(By.CSS_SELECTOR, '.career__entry')) == 6)
         check(driver.execute_script('return document.documentElement.scrollWidth <= innerWidth'), f'No page overflow at viewport width {width}')
-        check(driver.find_element(By.LINK_TEXT, 'View experience').is_displayed(), f'Work shortcut visible at {width}')
+        check(driver.find_element(By.CSS_SELECTOR, '.hero__actions .text-link').is_displayed(), f'Work shortcut visible at {width}')
+        freelance = driver.find_element(By.ID, 'freelance-bai-grupbai')
+        freelance.find_element(By.TAG_NAME, 'summary').click()
+        check(driver.execute_script('return document.documentElement.scrollWidth <= innerWidth'), f'Expanded timeline fits viewport width {width}')
+        freelance.find_element(By.TAG_NAME, 'summary').click()
         settled()
         if width == 390:
             driver.save_screenshot(str(evidence / 'zen-mobile.png'))
-            driver.find_element(By.LINK_TEXT, 'View experience').click()
+            driver.find_element(By.CSS_SELECTOR, '.hero__actions .text-link').click()
             wait.until(lambda d: d.current_url.endswith('#work'))
             driver.save_screenshot(str(evidence / 'zen-mobile-work.png'))
-            driver.find_element(By.CSS_SELECTOR, '.route__title a').click()
+            driver.find_element(By.CSS_SELECTOR, '.career').screenshot(str(evidence / 'zen-mobile-timeline.png'))
+            freelance = driver.find_element(By.ID, 'freelance-uma-ifarms')
+            freelance.find_element(By.TAG_NAME, 'summary').click()
+            freelance.screenshot(str(evidence / 'zen-mobile-expanded-timeline.png'))
+            freelance.find_element(By.TAG_NAME, 'summary').click()
+            driver.find_element(By.CSS_SELECTOR, '.career__summary').click()
+            driver.find_element(By.CSS_SELECTOR, '.career__body a').click()
             wait.until(lambda d: 'ELMO Software' in d.title)
             check(driver.execute_script('return document.documentElement.scrollWidth <= innerWidth'), 'Expanded ELMO stack fits mobile viewport')
             driver.save_screenshot(str(evidence / 'zen-mobile-elmo.png'))
+            driver.find_element(By.CSS_SELECTOR, '.role-history').screenshot(str(evidence / 'zen-mobile-career.png'))
+            check(driver.execute_script("return [...document.querySelectorAll('main > .strip--h .strip__stop')].every(el=>Math.abs(el.getBoundingClientRect().left-document.querySelector('main > .strip--h .strip__stop').getBoundingClientRect().left)<1)"), 'Mobile technology strips stay vertical')
+            driver.get(args.url + '/#freelance')
+            check(driver.find_element(By.ID, 'freelance').is_displayed(), 'Legacy freelance anchor reaches the unified timeline')
     driver.get(args.url)
     driver.find_element(By.TAG_NAME, 'body').send_keys(Keys.TAB)
     check(driver.switch_to.active_element.text == 'Skip to content', 'Keyboard starts at skip link')

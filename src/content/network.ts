@@ -108,7 +108,7 @@ export const stations: Station[] = [
   { id: "mysql", label: "MySQL", x: 912, y: 512, label_at: [894, 517], anchor: "end", marker: "dot" },
   { id: "mongodb", label: "MongoDB", x: 832, y: 624, label_at: [832, 654], anchor: "middle", marker: "dot" },
   { id: "gcp", label: "GCP", x: 752, y: 624, label_at: [752, 654], anchor: "middle", marker: "dot" },
-  { id: "aws", label: "AWS", x: 704, y: 616, label_at: [686, 670], anchor: "end", marker: { w: 22, h: 40 }, platforms: { P: [704, 608], M: [704, 624] } },
+  { id: "aws", label: "AWS", x: 704, y: 616, label_at: [704, 664], anchor: "middle", marker: { w: 22, h: 48 }, platforms: { P: [704, 608], M: [704, 624] } },
   { id: "cypress", label: "Cypress", x: 648, y: 608, label_at: [648, 638], anchor: "middle", marker: "dot" },
   { id: "jest", label: "Jest", x: 568, y: 608, label_at: [568, 638], anchor: "middle", marker: "dot" },
   { id: "jenkins", label: "Jenkins", x: 456, y: 608, label_at: [456, 638], anchor: "middle", marker: "dot" },

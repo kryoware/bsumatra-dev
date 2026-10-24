@@ -1,3 +1,5 @@
+import type { Stop } from "@/components/transit";
+
 export const EMAIL = "bsumatra.jbsa@gmail.com";
 export const GITHUB = "https://github.com/kryoware";
 export const LINKEDIN = "https://www.linkedin.com/in/baldwin-john-sumatra-3556881a5/";
@@ -19,6 +21,8 @@ export type CaseStudy = {
   location: string;
   dates: string;
   role: string;
+  roles?: Stop[];
+  promotion?: string;
   stack: string[];
   summary: string;
   approach: { step: string; detail: string }[];
@@ -33,6 +37,11 @@ export const caseStudies: CaseStudy[] = [
     location: "Sydney · Remote",
     dates: "Jun 2022 – Present",
     role: "Senior Full Stack Software Engineer",
+    promotion: "Promoted from Mid to Senior in 2023.",
+    roles: [
+      { name: "Mid Full Stack Software Engineer", note: "Jun 2022 – 2023" },
+      { name: "Senior Full Stack Software Engineer", note: "2023 – Present (promoted)" },
+    ],
     stack: ["React", "NestJS", "PHP", "Symfony", "TypeScript", "Cypress", "Jest", "Jenkins", "AWS", "Terraform"],
     summary: "Maintaining a microservices platform, connecting workforce systems and strengthening automated testing.",
     approach: [
@@ -49,7 +58,7 @@ export const caseStudies: CaseStudy[] = [
     employer: "Yondu",
     location: "Taguig · Remote",
     dates: "May 2021 – Jun 2022",
-    role: "Front End Developer",
+    role: "Mid Frontend Developer",
     stack: ["Vue", "Nuxt", "BootstrapVue", "React Native", "Azure"],
     summary: "Built four e-commerce frontends and contributed features and performance improvements to an insurance mobile app.",
     approach: [
@@ -77,9 +86,19 @@ export const caseStudies: CaseStudy[] = [
 ];
 
 export const freelanceWork = [
-  { name: "Umá · iFarms", dates: "Jan – Mar 2021", detail: "Built and maintained a Laravel GraphQL API and AWS EC2, RDS and S3 resources for a B2B platform, plus an internal NativeScript-Vue Android app and a Vue/Vuetify PWA." },
-  { name: "BAI · GRUPBAI Logistics", dates: "Jun – Jul 2020", detail: "Built customer, merchant and rider apps with NativeScript-Vue, a Laravel GraphQL API with near real-time tracking through Pusher and Apollo Subscriptions, and Vue apps for the MVP and administration." },
-  { name: "Retail & queueing systems", dates: "Dec 2018 – Feb 2019", detail: "Built a retailer landing page with bundle customization, bulk ordering and inventory tracking, and a bank queueing system spanning ticket kiosks, queue displays and a teller mobile app." },
+  { id: "freelance-uma-ifarms", alongside: null, name: "Umá · iFarms", summary: "B2B APIs and mobile apps built with Laravel, Vue and AWS.", dates: "Jan – Mar 2021", detail: "Built and maintained a Laravel GraphQL API and AWS EC2, RDS and S3 resources for a B2B platform, plus an internal NativeScript-Vue Android app and a Vue/Vuetify PWA." },
+  { id: "freelance-bai-grupbai", alongside: "Futuristech", name: "BAI · GRUPBAI Logistics", summary: "Customer, merchant and rider apps for a logistics platform.", dates: "Jun – Jul 2020", detail: "Built customer, merchant and rider apps with NativeScript-Vue, a Laravel GraphQL API with near real-time tracking through Pusher and Apollo Subscriptions, and Vue apps for the MVP and administration." },
+  { id: "freelance-retail-queueing", alongside: "Futuristech", name: "Retail & queueing systems", summary: "Retail ordering and inventory tools, plus a bank queueing system.", dates: "Dec 2018 – Feb 2019", detail: "Built a retailer landing page with bundle customization, bulk ordering and inventory tracking, and a bank queueing system spanning ticket kiosks, queue displays and a teller mobile app." },
+];
+
+// Ordered by end date; older freelance engagements overlap the Futuristech role.
+export const experienceTimeline = [
+  caseStudies[0],
+  caseStudies[1],
+  freelanceWork[0],
+  caseStudies[2],
+  freelanceWork[1],
+  freelanceWork[2],
 ];
 
 export const caseStudyBySlug = (slug: string) => caseStudies.find((c) => c.slug === slug);

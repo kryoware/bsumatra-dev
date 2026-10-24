@@ -22,8 +22,6 @@ const SPEED = 60; // viewBox units per second
 const DWELL = 1.4; // seconds stopped at each station
 const PULSE = 1.1; // seconds per station pulse, within the dwell
 const renderLines = (["P", "M", "D", "N", "S", "H"] as const).map(lineById);
-const connectorStart = stationById("room");
-const connectorEnd = stationById("laravel");
 
 // Out and back along the line, stopping at every station; each stop's pulse shares the train's timeline so they stay in sync.
 function runLine(root: Element, line: Line, i: number): Animation[] {
@@ -175,14 +173,6 @@ export function NetworkMap({ title }: { title: ReactNode }) {
             className="map"
             aria-hidden="true"
           >
-            <path
-              className="map__connector"
-              d={`M${connectorStart.x} ${connectorStart.y} L${connectorEnd.x} ${connectorEnd.y}`}
-              data-from={connectorStart.id}
-              data-to={connectorEnd.id}
-              data-dim={(dimmed("N") && dimmed("M")) || undefined}
-              style={{ "--line": lineById("N").color } as CSSProperties}
-            />
             {renderLines.map((line) => {
               const d = roundedPath(line.path);
               const i = lines.indexOf(line);
@@ -233,7 +223,7 @@ export function NetworkMap({ title }: { title: ReactNode }) {
                       y={s.y - s.marker.h / 2}
                       width={s.marker.w}
                       height={s.marker.h}
-                      rx={s.marker.h / 2}
+                      rx={Math.min(s.marker.w, s.marker.h) / 2}
                       className="map__xfer"
                     />
                   )}
@@ -300,7 +290,7 @@ export function NetworkMap({ title }: { title: ReactNode }) {
                   <Roundel id={line.id} color={line.color} />
                   <span className="legend__name">{line.name}</span>
                   <span className="legend__kind">{line.kind}</span>
-                  <span className="sr-only">Skills: {line.stations.map((id) => stationById(id).label).join(", ")}.{line.id === "N" && " Dotted connection from Room + SQLCipher to Laravel."}</span>
+                  <span className="sr-only">Skills: {line.stations.map((id) => stationById(id).label).join(", ")}.</span>
                 </Link>
               </li>
             ))}

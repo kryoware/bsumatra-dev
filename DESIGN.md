@@ -296,7 +296,7 @@ Signage plates: solid, square, heavy.
 The line's identity mark: a paper disc with a thick ring in the line color and the line letter at 900. Default 28px, large 56px. It sits beside route titles, the legend rows, the board title, detail-page heads, and next-line links. It is always aria-hidden, because the line name is always present as text.
 
 ### Strip Map (signature)
-The in-train door diagram. An ordered list of stops on an 8px spine in the line color, with 20px paper dots ringed in ink. Stop names are 800; notes are Slate at 0.92rem. Branches leave as a short Pewter spur. It is vertical by default and horizontal from 860px of usable content width, leaving long technology names room on unfolded screens. On sample lines a dashed paper stripe runs down the spine.
+The in-train door diagram. An ordered list of stops on an 8px spine in the line color, with 20px paper dots ringed in ink. Stop names are 800; notes are Slate at 0.92rem. Branches leave as a short Pewter spur. It is vertical by default and horizontal from 860px of usable content width. Horizontal strips have at most five stops per row, with 32px between rows; each row ends its own spine. Shorter lists divide the available width evenly, leaving long technology names room on unfolded screens. On sample lines a dashed paper stripe runs down the spine.
 
 ### Network Map (signature)
 Octilinear SVG. Tracks are 9px with round caps in the line color, widening to 14px on keyboard focus. Sample lines overlay a 3px paper dash (9/9). Hovering or focusing a line or legend row dims other lines to 12% and unserved stations to 22%. Hovering a station lights every line through it. On first load the tracks draw in legend order (1.2s, 110ms stagger, exponential ease-out). After 1.8s the trains start, staggered 0.35s per line: a 24x12 paper carriage with an ink outline and windows in the line color rides the track at 60 units per second, dwells 1.4s at every station, and fires a 1.1s ring pulse in the line color as it arrives. Trains dim with their line, pause off-screen or in a hidden tab, and stop when the legend control is pressed. Under reduced motion the map is static and the control is hidden. The map plate takes a tab stop only when it pans (below 1100px). Line S runs TypeScript, Next.js, Cloudflare, then "You are here"; it crosses Line H without a station because the site does not run on the homelab.
@@ -307,7 +307,9 @@ Long straight runs establish the network: the blue main spine, the orange databa
 
 Station and badge entrances use backwards fill only: their finished animation must release opacity so later hover/focus dimming remains effective. Existing route draw and train timings remain unchanged.
 
-Crossing paint order is separate from legend and animation order: red H is above brown S, and green D is above orange M. The 3px purple dotted connector joins Room + SQLCipher to Laravel, the nearest station on another line (80 viewBox units). This is a visual connection, not a train route or an additional technology claim; it carries no train and leaves the professional stack memberships intact. Its fine dots are distinct from the broad dashed overlay reserved for sample routes. The connector dims only when neither connected route is highlighted, and its description is included in the accessible Notifly link.
+Crossing paint order is separate from legend and animation order: red H is above brown S, and green D is above orange M. The Notifly line has no dotted connector to Laravel.
+
+Shared capsules use a radius of half their shorter dimension. React is 48×22; AWS is the same capsule rotated vertically, 22×48, with its label centered below. Both use an 11-unit radius so the vertical version has straight sides rather than becoming an ellipse. Each train still follows its own platform position.
 
 ### Legend
 A paper panel with a 3px ink border, set into the map. Its head row pairs the "Lines" title with the outline train control. Line rows (roundel, 800 name, Slate kind) double as navigation and dim along with the map. Each link includes a screen-reader skill list generated from its actual station membership, providing the relationship hidden by the decorative SVG. The closing sentence explains that the routes connect professional experience, selected technologies and personal projects. All legend fine print holds the 12px floor. No sample key appears while all routes represent real work.
@@ -321,8 +323,18 @@ An inline status mark for stand-in content: 2px dashed border in the current col
 - **Spec:** two-column fact list under a 3px ink rule, with 1px rule dividers and 0.85rem Slate terms.
 - **Terminus:** a full ink block with fluid padding, a display title, Fog on Ink body, and an inverse button.
 
-### Location tags
-Company locations are compact square tags with a 1px rule-colored border, 2px/8px padding and secondary ink text at 0.85em. They sit beside employer/date metadata and in detail-page facts. City and remote status share one tag; they are factual metadata, not filter controls. Metadata wraps on compact screens and remains in normal reading order.
+### Location metadata
+Company city and remote status use regular-weight secondary ink without a border, background or chip padding. Locations appear inside expanded homepage career entries and in the existing work-page facts. Middle dots occupy a centered 1.4em inline box so the location and freelance-name separators retain visible spacing.
+
+### Experience chronology
+One connected vertical homepage timeline combines company roles and all three freelance engagements, newest end date first. Each entry is a native details/summary disclosure, closed by default, showing its original dates, employer/client, role and a brief summary. Expanded company entries reveal location, promotion copy and a View experience link to the unchanged work page; expanded freelance entries reveal the original project description. There is no second freelance board or homepage technology strip.
+
+The rail is 2px secondary ink, with 16px paper stations ringed in the company route color or secondary ink for freelance work. Typography carries the hierarchy: 1.25rem/800 employer names, 0.95rem secondary roles and 0.92rem dates. Dates occupy a 180px desktop column, with a 24px gap before the content; below 640px they move above each entry. Summaries have 20px vertical padding, and a simple plus/minus marks disclosure state. Native keyboard behavior and global focus rings apply; no new animation or client component is needed.
+
+Umá / iFarms (Jan–Mar 2021) sits between Yondu and Futuristech. The 2020 logistics and 2018–19 retail/queueing work explicitly say Freelance alongside Futuristech even while collapsed. Dates reference the original records and do not imply continuous freelance employment. The legacy #freelance anchor targets the unified timeline, and each freelance-* anchor targets its own visible row.
+
+### Career progression
+ELMO's expanded homepage entry says Promoted from Mid to Senior in 2023. Its work page retains separate Mid and Senior stations with their dates beneath a Career progression heading, plus the concise current-role fact. No promotion month is implied. Company work-page technology strips retain the five-item desktop row cap and vertical mobile layout.
 
 ### Navigation
 - **Masthead:** minimum 64px bar with a 3px ink bottom rule. The mark is a 5px-ring ink circle plus the name at 900. Links are 700 with an underline on hover. At 860px and below, the project links occupy a full row beneath the mark and theme/Email controls. At very narrow widths or enlarged text, the top controls wrap too; no navigation is hidden.

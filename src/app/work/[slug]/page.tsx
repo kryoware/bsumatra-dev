@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Roundel, StripMap } from "@/components/transit";
+import { Roundel, SeparatedText, StripMap } from "@/components/transit";
 import { lineById } from "@/content/network";
 import { EMAIL, caseStudies, caseStudyBySlug } from "@/content/site";
 
@@ -37,10 +37,17 @@ export default async function CaseStudyPage({ params }: Params) {
 
       <dl className="spec spec--facts">
         <div><dt>Company</dt><dd>{study.employer}</dd></div>
-        <div><dt>Location</dt><dd><span className="location-tag">{study.location}</span></dd></div>
+        <div><dt>Location</dt><dd><span className="work-location"><SeparatedText text={study.location} /></span></dd></div>
         <div><dt>Dates</dt><dd>{study.dates}</dd></div>
         <div><dt>Role</dt><dd>{study.role}</dd></div>
       </dl>
+
+      {study.roles && (
+        <section className="role-history" aria-labelledby="career-title">
+          <h2 id="career-title" className="role-history__title">Career progression</h2>
+          <StripMap stops={study.roles} color={line.color} label="Career progression" />
+        </section>
+      )}
 
       <section className="prose">
         <h2>My contributions</h2>

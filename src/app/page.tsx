@@ -1,9 +1,9 @@
 import type { CSSProperties } from "react";
 import Link from "next/link";
 import { NetworkMap } from "@/components/NetworkMap";
-import { Roundel, StripMap } from "@/components/transit";
+import { Roundel, SeparatedText, StripMap } from "@/components/transit";
 import { lineById } from "@/content/network";
-import { EMAIL, GITHUB, LINKEDIN, caseStudies, freelanceWork, owner } from "@/content/site";
+import { EMAIL, GITHUB, LINKEDIN, experienceTimeline, owner } from "@/content/site";
 import { notiflyPipeline, requestPath, services } from "@/content/systems";
 
 const photos = [
@@ -36,41 +36,45 @@ export default function Home() {
       <section id="work" className="section">
         <h2 className="section__title">Professional experience</h2>
         <p className="section__lede">
-          From commerce frontends and mobile apps to API integrations and automated testing.
-          These are the teams I&apos;ve worked with and the work I contributed.
+          Company roles and freelance projects, from commerce and mobile apps to integrations and automated testing.
         </p>
-        <ul className="routes">
-          {caseStudies.map((c) => {
-            const line = lineById(c.line);
+        <ol id="freelance" className="career" aria-label="Career timeline, most recent first">
+          {experienceTimeline.map((entry) => {
+            const company = "employer" in entry;
             return (
-              <li key={c.slug} className="route" style={{ "--line": line.color } as CSSProperties}>
-                <div className="route__head">
-                  <Roundel id={line.id} color={line.color} />
-                  <h3 className="route__title">
-                    <Link href={`/work/${c.slug}/`}>{c.title}</Link>
-                  </h3>
-                  <span className="route__meta">{c.employer} · {c.dates}<span className="location-tag">{c.location}</span></span>
-                </div>
-                <StripMap stops={c.stack.map((name) => ({ name }))} color={line.color} label={`${c.title} stack`} />
-                <p className="route__summary">{c.summary}</p>
+              <li
+                key={company ? entry.slug : entry.id}
+                id={company ? undefined : entry.id}
+                className="career__stop"
+                data-kind={company ? "company" : "freelance"}
+                style={{ "--line": company ? lineById(entry.line).color : "var(--ink-3)" } as CSSProperties}
+              >
+                <details className="career__entry">
+                  <summary className="career__summary">
+                    <span className="career__dates">{entry.dates}</span>
+                    <span className="career__info">
+                      <span className="career__name"><SeparatedText text={company ? entry.employer : entry.name} /></span>
+                      <span className="career__role">
+                        {company ? entry.role : entry.alongside ? `Freelance alongside ${entry.alongside}` : "Freelance"}
+                      </span>
+                      <span className="career__brief">{entry.summary}</span>
+                    </span>
+                    <span className="career__toggle" aria-hidden="true" />
+                  </summary>
+                  <div className="career__body">
+                    {company ? (
+                      <>
+                        <p className="work-location"><SeparatedText text={entry.location} /></p>
+                        {entry.promotion && <p>{entry.promotion}</p>}
+                        <Link className="text-link" href={`/work/${entry.slug}/`}>View experience</Link>
+                      </>
+                    ) : <p>{entry.detail}</p>}
+                  </div>
+                </details>
               </li>
             );
           })}
-        </ul>
-      </section>
-
-      <section id="freelance" className="section">
-        <h2 className="section__title">Freelance projects</h2>
-        <div className="board">
-          <dl className="board__rows">
-            {freelanceWork.map((work) => (
-              <div key={work.name} className="board__row">
-                <dt>{work.name}<br /><span className="fineprint">{work.dates}</span></dt>
-                <dd>{work.detail}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
+        </ol>
       </section>
 
       <section id="notifly" className="section feature" style={{ "--line": notifly.color } as CSSProperties}>
