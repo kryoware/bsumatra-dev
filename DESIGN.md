@@ -206,9 +206,9 @@ Theme changes use a brief color transition. Reduced motion switches themes immed
 
 ### Secondary
 The six route colors. Each belongs to one line and travels with it everywhere: track, roundel ring, strip-map spine, bullet rings, and the underline color of that line's links. They are set per element through the `--line` custom property.
-- **Payments Blue** (line-p-blue, #0a6cc0): Line P, Payments ledger (sample).
-- **Dispatch Green** (line-d-green, #13924a): Line D, Dispatch console (sample).
-- **Monolith Orange** (line-m-orange, #e98300): Line M, Monolith split (sample).
+- **Integrations Blue** (line-p-blue, #0a6cc0): Line P, ELMO Software integrations and reliability.
+- **Commerce Green** (line-d-green, #13924a): Line D, Yondu commerce and mobile.
+- **APIs Orange** (line-m-orange, #e98300): Line M, Futuristech commerce and APIs.
 - **Notifly Violet** (line-n-violet, #7443e6): Line N, Notifly.
 - **Homelab Red** (line-h-red, #cf2e26): Line H, Homelab.
 - **This-Site Bronze** (line-s-bronze, #94602a): Line S, the request path that serves this site: TypeScript and Next.js, Cloudflare, then the visitor.
@@ -275,7 +275,7 @@ The system is flat. There are no box shadows. Depth is conveyed by signage means
 
 ## Shapes
 
-Corners are square (0) on every panel, button, board, and tag. Circles are reserved for transit marks: roundels (border at 17% of size), stops (small paper dots with an ink ring), interchange rings, the "you are here" ring and dot, and strip-map dots. Interchanges where lines run in parallel are paper capsules with an ink outline. Track corners turn on octilinear bends with a 22px rounded join and round caps. The legend's sample-key glyph is a miniature track with a 5px round cap (track-cap). Train carriages are the one rounded rectangle (3px corners), because they are vehicles on the track, not chrome.
+Corners are square (0) on every panel, button, board, and tag. Circles are reserved for transit marks: roundels (border at 17% of size), stops (small paper dots with an ink ring), interchange rings, the "you are here" ring and dot, and strip-map dots. Shared skill stations use larger rings at actual junctions, or capsules across parallel route lanes. React's capsule spans the separate blue/orange platforms. Track corners use 27px circular arcs on 45° or 90° turns, three times the 9px track width, with round caps. Train carriages are the one rounded rectangle (3px corners), because they are vehicles on the track, not chrome.
 
 Borders come in three weights: 3px ink for panels and section rules, 2px dashed for sample notices, and 1px rule for internal dividers.
 
@@ -301,8 +301,16 @@ The in-train door diagram. An ordered list of stops on an 8px spine in the line 
 ### Network Map (signature)
 Octilinear SVG. Tracks are 9px with round caps in the line color, widening to 14px on keyboard focus. Sample lines overlay a 3px paper dash (9/9). Hovering or focusing a line or legend row dims other lines to 12% and unserved stations to 22%. Hovering a station lights every line through it. On first load the tracks draw in legend order (1.2s, 110ms stagger, exponential ease-out). After 1.8s the trains start, staggered 0.35s per line: a 24x12 paper carriage with an ink outline and windows in the line color rides the track at 60 units per second, dwells 1.4s at every station, and fires a 1.1s ring pulse in the line color as it arrives. Trains dim with their line, pause off-screen or in a hidden tab, and stop when the legend control is pressed. Under reduced motion the map is static and the control is hidden. The map plate takes a tab stop only when it pans (below 1100px). Line S runs TypeScript, Next.js, Cloudflare, then "You are here"; it crosses Line H without a station because the site does not run on the homelab.
 
+The current network has 32 stations. Professional lines include every technology in their published work-page stack, with ten ELMO Software stops, five Yondu stops and ten Futuristech stops. React and AWS join P/M; Vue joins D/M; PHP joins P/M; Next.js joins M/S; TypeScript joins P/S. Hand-laid geometry puts stops on straight approaches. A station may specify separate platform positions so trains and pulses stay on their own route within a shared capsule. React's lanes are 24 units apart; AWS spans blue/orange tracks 16 units apart. Orange and blue never rely on coincident strokes or paint order. Terraform continues the blue line, Azure extends the green line, and GCP sits on the orange run.
+
+Long straight runs establish the network: the blue main spine, the orange database run, and the eastward site route. Circular fillets use angle-dependent tangent cutbacks, not quadratic approximations; authored segments leave room for full-size radii. A 15-unit paper casing, widening to 20 on an active route, gives unrelated crossings a clear over/under reading. Only a station symbol means a transfer. The casing is a portfolio design choice, not a claimed operator requirement. Terminal stops retain the system's circle/capsule vocabulary, as seen in MTR maps; TfL-style tabs and continuation arrows are not mixed into this convention. Labels clear other labels, markers and the title/legend panels. Node coverage/radius tests and Zen path/label checks guard this contract. Sources and scope are recorded in [the transit research note](docs/transit-map-research.md).
+
+Station and badge entrances use backwards fill only: their finished animation must release opacity so later hover/focus dimming remains effective. Existing route draw and train timings remain unchanged.
+
+Crossing paint order is separate from legend and animation order: red H is above brown S, and green D is above orange M. The 3px purple dotted connector joins Room + SQLCipher to Laravel, the nearest station on another line (80 viewBox units). This is a visual connection, not a train route or an additional technology claim; it carries no train and leaves the professional stack memberships intact. Its fine dots are distinct from the broad dashed overlay reserved for sample routes. The connector dims only when neither connected route is highlighted, and its description is included in the accessible Notifly link.
+
 ### Legend
-A paper panel with a 3px ink border, set into the map. Its head row pairs the "Lines" title with the outline train control. Line rows (roundel, 800 name, Slate kind) double as navigation and dim along with the map. A 1px rule separates the dashed sample key and the NDA line. All legend fine print holds the 12px floor.
+A paper panel with a 3px ink border, set into the map. Its head row pairs the "Lines" title with the outline train control. Line rows (roundel, 800 name, Slate kind) double as navigation and dim along with the map. Each link includes a screen-reader skill list generated from its actual station membership, providing the relationship hidden by the decorative SVG. The closing sentence explains that the routes connect professional experience, selected technologies and personal projects. All legend fine print holds the 12px floor. No sample key appears while all routes represent real work.
 
 ### Sample Tag
 An inline status mark for stand-in content: 2px dashed border in the current color, 0.75rem, 800, uppercase with 0.06em tracking. It always sits inline inside the sentence that explains the stand-in. It is never a kicker on a heading and is not a general label style.
@@ -312,6 +320,9 @@ An inline status mark for stand-in content: 2px dashed border in the current col
 - **Board:** 3px ink frame, ink title bar with roundel, two-column definition rows split by 1px rules.
 - **Spec:** two-column fact list under a 3px ink rule, with 1px rule dividers and 0.85rem Slate terms.
 - **Terminus:** a full ink block with fluid padding, a display title, Fog on Ink body, and an inverse button.
+
+### Location tags
+Company locations are compact square tags with a 1px rule-colored border, 2px/8px padding and secondary ink text at 0.85em. They sit beside employer/date metadata and in detail-page facts. City and remote status share one tag; they are factual metadata, not filter controls. Metadata wraps on compact screens and remains in normal reading order.
 
 ### Navigation
 - **Masthead:** minimum 64px bar with a 3px ink bottom rule. The mark is a 5px-ring ink circle plus the name at 900. Links are 700 with an underline on hover. At 860px and below, the project links occupy a full row beneath the mark and theme/Email controls. At very narrow widths or enlarged text, the top controls wrap too; no navigation is hidden.
@@ -327,7 +338,7 @@ An inline status mark for stand-in content: 2px dashed border in the current col
 - **Do** use dashed track (paper dash over the line) and the dashed Sample Tag to mark sample or placeholder content, and say so in words beside it.
 - **Do** set titles and interactive labels in Overpass at 700–900, and frame panels with 3px ink borders.
 - **Do** keep authored motion on the map: the draw-on-load and the running trains. Everything else is a hover or focus state transition with the ease-out curve. Trains stay pausable and pause off-screen, and the map is static under reduced motion.
-- **Do** keep the legend's NDA line in the first viewport at 1280x720 and up.
+- **Do** keep the legend's route explanation in the first viewport at 1280x720 and up.
 - **Do** dim rather than hide: unfocused lines drop to 12% and unserved stations to 22%.
 
 ### Don't:

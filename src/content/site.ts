@@ -16,6 +16,7 @@ export type CaseStudy = {
   line: "P" | "D" | "M";
   title: string;
   employer: string;
+  location: string;
   dates: string;
   role: string;
   stack: string[];
@@ -25,13 +26,14 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "hero-teams",
+    slug: "elmo-software",
     line: "P",
     title: "Integrations & reliability",
-    employer: "Hero Teams",
+    employer: "ELMO Software",
+    location: "Sydney · Remote",
     dates: "Jun 2022 – Present",
     role: "Senior Full Stack Software Engineer",
-    stack: ["React", "NestJS", "PHP", "Symfony", "TypeScript", "Cypress", "Jest", "Jenkins"],
+    stack: ["React", "NestJS", "PHP", "Symfony", "TypeScript", "Cypress", "Jest", "Jenkins", "AWS", "Terraform"],
     summary: "Maintaining a microservices platform, connecting workforce systems and strengthening automated testing.",
     approach: [
       { step: "Connected systems", detail: "Worked on payroll, HR, workforce and identity-provider API integrations, alongside ETL pipelines." },
@@ -45,9 +47,10 @@ export const caseStudies: CaseStudy[] = [
     line: "D",
     title: "Commerce & mobile",
     employer: "Yondu",
+    location: "Taguig · Remote",
     dates: "May 2021 – Jun 2022",
     role: "Front End Developer",
-    stack: ["Vue", "Nuxt", "BootstrapVue", "React Native"],
+    stack: ["Vue", "Nuxt", "BootstrapVue", "React Native", "Azure"],
     summary: "Built four e-commerce frontends and contributed features and performance improvements to an insurance mobile app.",
     approach: [
       { step: "Four connected frontends", detail: "Used Nuxt and BootstrapVue for an e-commerce landing page, storefront, buyer dashboard and seller dashboard." },
@@ -60,9 +63,10 @@ export const caseStudies: CaseStudy[] = [
     line: "M",
     title: "Commerce & APIs",
     employer: "Futuristech Inc.",
+    location: "Davao",
     dates: "Aug 2017 – Dec 2020",
     role: "Full Stack Web Developer",
-    stack: ["React", "Next.js", "Vue", "Laravel", "PHP", "MySQL", "PostgreSQL", "MongoDB"],
+    stack: ["React", "Next.js", "Vue", "Laravel", "PHP", "MySQL", "PostgreSQL", "MongoDB", "AWS", "GCP"],
     summary: "Built commerce applications and APIs across custom platforms, Shopify and Reaction Commerce.",
     approach: [
       { step: "APIs & integrations", detail: "Built Laravel REST and GraphQL APIs and worked with payment, notification, point-of-sale and driver-tracking APIs." },

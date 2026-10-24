@@ -49,7 +49,7 @@ export default function Home() {
                   <h3 className="route__title">
                     <Link href={`/work/${c.slug}/`}>{c.title}</Link>
                   </h3>
-                  <span className="route__meta">{c.employer} · {c.dates}</span>
+                  <span className="route__meta">{c.employer} · {c.dates}<span className="location-tag">{c.location}</span></span>
                 </div>
                 <StripMap stops={c.stack.map((name) => ({ name }))} color={line.color} label={`${c.title} stack`} />
                 <p className="route__summary">{c.summary}</p>
@@ -71,10 +71,6 @@ export default function Home() {
             ))}
           </dl>
         </div>
-        <p className="section__lede">
-          BS Information Technology, Holy Child College of Davao · April 2019.
-          I speak English and Filipino.
-        </p>
       </section>
 
       <section id="notifly" className="section feature" style={{ "--line": notifly.color } as CSSProperties}>

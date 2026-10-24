@@ -37,6 +37,7 @@ export default async function CaseStudyPage({ params }: Params) {
 
       <dl className="spec spec--facts">
         <div><dt>Company</dt><dd>{study.employer}</dd></div>
+        <div><dt>Location</dt><dd><span className="location-tag">{study.location}</span></dd></div>
         <div><dt>Dates</dt><dd>{study.dates}</dd></div>
         <div><dt>Role</dt><dd>{study.role}</dd></div>
       </dl>

@@ -5,9 +5,11 @@ import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 
 import {
   VIEWBOX,
   lines,
+  lineById,
   roundedPath,
   stationLines,
   stationById,
+  stationPoint,
   stations,
   type Line,
   type LineId,
@@ -19,6 +21,9 @@ type Focus = { line: LineId } | { station: string } | null;
 const SPEED = 60; // viewBox units per second
 const DWELL = 1.4; // seconds stopped at each station
 const PULSE = 1.1; // seconds per station pulse, within the dwell
+const renderLines = (["P", "M", "D", "N", "S", "H"] as const).map(lineById);
+const connectorStart = stationById("room");
+const connectorEnd = stationById("laravel");
 
 // Out and back along the line, stopping at every station; each stop's pulse shares the train's timeline so they stay in sync.
 function runLine(root: Element, line: Line, i: number): Animation[] {
@@ -29,11 +34,11 @@ function runLine(root: Element, line: Line, i: number): Animation[] {
   const samples = Array.from({ length: Math.floor(total) + 1 }, (_, l) => track.getPointAtLength(l));
   const stops = line.stations
     .map((id) => {
-      const s = stationById(id);
+      const [x, y] = stationPoint(id, line.id);
       let at = 0;
       let best = Infinity;
       samples.forEach((p, l) => {
-        const d = Math.hypot(p.x - s.x, p.y - s.y);
+        const d = Math.hypot(p.x - x, p.y - y);
         if (d < best) [best, at] = [d, l];
       });
       return { id, at };
@@ -53,7 +58,7 @@ function runLine(root: Element, line: Line, i: number): Animation[] {
   t += Math.abs(route[0].at - route[route.length - 1].at) / SPEED;
   frames.push({ t, at: route[0].at });
 
-  const timing = { duration: t * 1000, iterations: Infinity, delay: (1.8 + i * 0.35) * 1000 };
+  const timing = { duration: t * 1000, iterations: Infinity, delay: (1.8 + i * 0.35) * 1000, fill: "both" as const };
   const animations = [
     train.animate(
       frames.map((f) => ({ offset: f.t / t, offsetDistance: `${(f.at / total) * 100}%`, easing: f.easing ?? "linear" })),
@@ -170,8 +175,17 @@ export function NetworkMap({ title }: { title: ReactNode }) {
             className="map"
             aria-hidden="true"
           >
-            {lines.map((line, i) => {
+            <path
+              className="map__connector"
+              d={`M${connectorStart.x} ${connectorStart.y} L${connectorEnd.x} ${connectorEnd.y}`}
+              data-from={connectorStart.id}
+              data-to={connectorEnd.id}
+              data-dim={(dimmed("N") && dimmed("M")) || undefined}
+              style={{ "--line": lineById("N").color } as CSSProperties}
+            />
+            {renderLines.map((line) => {
               const d = roundedPath(line.path);
+              const i = lines.indexOf(line);
               return (
                 <a
                   key={line.id}
@@ -186,6 +200,7 @@ export function NetworkMap({ title }: { title: ReactNode }) {
                   aria-label={`${line.name} line`}
                 >
                   <path d={d} className="map__hit" data-track={line.id} />
+                  <path d={d} className="map__casing" />
                   <path d={d} className="map__track" pathLength={1} />
                   {line.sample && <path d={d} className="map__works" />}
                 </a>
@@ -199,6 +214,7 @@ export function NetworkMap({ title }: { title: ReactNode }) {
                 <g
                   key={s.id}
                   className="map__station"
+                  data-station={s.id}
                   data-dim={off || undefined}
                   onMouseEnter={() => setFocus({ station: s.id })}
                   onMouseLeave={clear}
@@ -233,16 +249,17 @@ export function NetworkMap({ title }: { title: ReactNode }) {
               );
             })}
 
-            {lines.map((line, i) => (
+            {renderLines.map((line) => (
               <g
                 key={`train-${line.id}`}
                 className="map__train-route"
                 data-dim={dimmed(line.id) || undefined}
-                style={{ "--line": line.color, "--i": i } as CSSProperties}
+                style={{ "--line": line.color, "--i": lines.indexOf(line) } as CSSProperties}
               >
-                {line.stations.map((id) => (
-                  <circle key={id} r={10} className="map__pulse" data-pulse={`${line.id}-${id}`} />
-                ))}
+                {line.stations.map((id) => {
+                  const [x, y] = stationPoint(id, line.id);
+                  return <circle key={id} r={10} className="map__pulse" data-pulse={`${line.id}-${id}`} data-stop-x={x} data-stop-y={y} />;
+                })}
                 <g className="map__train" data-train={line.id} style={{ offsetPath: `path('${roundedPath(line.path)}')` }}>
                   <rect x={-12} y={-6} width={24} height={12} rx={3} className="map__carriage" />
                   <path d="M-6 -2v4 M0 -2v4 M6 -2v4" className="map__windows" />
@@ -283,6 +300,7 @@ export function NetworkMap({ title }: { title: ReactNode }) {
                   <Roundel id={line.id} color={line.color} />
                   <span className="legend__name">{line.name}</span>
                   <span className="legend__kind">{line.kind}</span>
+                  <span className="sr-only">Skills: {line.stations.map((id) => stationById(id).label).join(", ")}.{line.id === "N" && " Dotted connection from Room + SQLCipher to Laravel."}</span>
                 </Link>
               </li>
             ))}
