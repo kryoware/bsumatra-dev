@@ -80,7 +80,8 @@ export default function NotiflyPage() {
       </section>
 
       <p className="page__close">
-        Want the walkthrough? <a href={`mailto:${EMAIL}`}>Email me</a>.
+        Want to try it? <a href="https://notifly.bsumatra.dev/">Visit the Notifly website</a>. Want the walkthrough?{" "}
+        <a href={`mailto:${EMAIL}`}>Email me</a>.
       </p>
     </main>
   );
