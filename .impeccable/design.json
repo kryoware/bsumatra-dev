@@ -339,6 +339,10 @@
       "legend-mobile": {
         "displayName": "Mobile legend",
         "purpose": "Readable line names below the map on mobile and unfolded screens."
+      },
+      "year-numeral": {
+        "displayName": "Year numeral",
+        "purpose": "Year stations on the experience timeline; 1.5rem below 640px."
       }
     },
     "shadows": [],

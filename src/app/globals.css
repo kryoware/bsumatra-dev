@@ -903,61 +903,159 @@ a {
 /* Career timeline */
 
 .career {
+  --node-y: 30px;
   list-style: none;
-  margin: 32px 0 0;
+  margin: 40px 0 0;
   padding: 0;
 }
 
-.career__stop {
+.career__year {
+  display: flex;
+  flex-direction: column;
+  min-height: 144px;
+}
+
+.career__events {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.career__year > :last-child,
+.career__events > :last-child {
+  flex-grow: 1;
+}
+
+.career__row {
+  display: grid;
+  grid-template-columns: 96px 72px minmax(0, 1fr);
+  grid-template-areas: "time graph content";
+}
+
+.career__row[data-kind="year"] {
+  min-height: 72px;
+}
+
+.career__row[data-kind="start"] {
+  min-height: 80px;
+}
+
+.career__time {
+  grid-area: time;
+  padding: 19px 16px 0 0;
+  text-align: right;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.career__time--year {
+  padding-top: 16px;
+  font-size: 1.75rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.career__time--present {
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.career__graph {
+  grid-area: graph;
   position: relative;
-  padding-left: 40px;
 }
 
-.career__stop::before {
-  content: "";
+.career__track {
   position: absolute;
-  left: 10px;
-  top: 32px;
-  bottom: -32px;
-  width: 2px;
-  background: var(--ink-3);
+  left: calc(var(--x) - var(--w) / 2);
+  width: var(--w);
+  background: var(--c);
 }
 
-.career__stop:last-child::before {
-  display: none;
+.career__track--above {
+  top: 0;
+  height: var(--node-y);
 }
 
-.career__stop::after {
-  content: "";
+.career__track--below {
+  top: var(--node-y);
+  bottom: 0;
+}
+
+.career__turnout {
   position: absolute;
-  left: 3px;
-  top: 24px;
-  width: 16px;
-  height: 16px;
-  border: 3px solid var(--line);
+  left: 0;
+  overflow: visible;
+  fill: none;
+  stroke: var(--ink-3);
+  stroke-width: 6;
+  pointer-events: none;
+}
+
+.career__turnout--merge {
+  top: calc(var(--node-y) - var(--h));
+}
+
+.career__turnout--fork {
+  top: var(--node-y);
+}
+
+.career__node {
+  --s: 16px;
+  --b: 4px;
+  position: absolute;
+  left: calc(var(--x) - var(--s) / 2);
+  top: calc(var(--node-y) - var(--s) / 2);
+  width: var(--s);
+  height: var(--s);
+  border: var(--b) solid var(--c);
   border-radius: 50%;
   background: var(--paper);
-  pointer-events: none;
+}
+
+.career__node--year {
+  --s: 32px;
+  --b: 6px;
+}
+
+.career__node--interchange {
+  --s: 24px;
+  --b: 4px;
+}
+
+.career__content {
+  grid-area: content;
+  min-width: 0;
+}
+
+.career__note {
+  padding-top: 19px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.career__entry {
+  padding-bottom: 28px;
 }
 
 .career__summary {
   display: grid;
-  grid-template-columns: 180px minmax(0, 1fr) 24px;
-  gap: 24px;
-  padding-block: 20px;
+  grid-template-columns: minmax(0, 1fr) 24px;
+  gap: 16px;
+  padding-top: 17px;
   list-style: none;
   cursor: pointer;
 }
 
 .career__summary::-webkit-details-marker {
   display: none;
-}
-
-.career__dates {
-  padding-top: 3px;
-  font-size: 0.92rem;
-  line-height: 1.5;
-  color: var(--ink-2);
 }
 
 .career__name {
@@ -970,7 +1068,8 @@ a {
 .career__summary:hover .career__name {
   text-decoration: underline;
   text-decoration-color: var(--line);
-  text-decoration-thickness: 2px;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
 }
 
 .career__role {
@@ -978,6 +1077,10 @@ a {
   margin-top: 4px;
   font-size: 0.95rem;
   color: var(--ink-2);
+}
+
+.career__dates {
+  white-space: nowrap;
 }
 
 .career__brief {
@@ -991,6 +1094,7 @@ a {
   position: relative;
   width: 24px;
   height: 24px;
+  margin-top: 1px;
 }
 
 .career__toggle::before,
@@ -1014,8 +1118,7 @@ a {
 
 .career__body {
   max-width: 70ch;
-  margin-left: 204px;
-  padding: 0 48px 20px 0;
+  padding: 12px 40px 0 0;
 }
 
 .career__body p + p {
@@ -1030,33 +1133,47 @@ a {
 }
 
 @container site (max-width: 640px) {
-  .career__stop {
-    padding-left: 32px;
+  .career__year {
+    min-height: 120px;
+  }
+
+  .career__row {
+    grid-template-columns: 60px minmax(0, 1fr);
+    grid-template-areas:
+      "graph time"
+      "graph content";
+    grid-template-rows: auto 1fr;
+  }
+
+  .career__time {
+    padding-right: 0;
+    text-align: left;
+  }
+
+  .career__time--year {
+    padding-top: 18px;
+    font-size: 1.5rem;
+  }
+
+  .career__note {
+    padding-top: 2px;
+    padding-bottom: 16px;
   }
 
   .career__summary {
-    grid-template-columns: minmax(0, 1fr) 24px;
-    gap: 8px 12px;
+    padding-top: 2px;
+    gap: 12px;
+  }
+
+  .career__role .meta-separator {
+    display: none;
   }
 
   .career__dates {
-    grid-column: 1;
-    grid-row: 1;
-    padding-top: 0;
-  }
-
-  .career__info {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  .career__toggle {
-    grid-column: 2;
-    grid-row: 1;
+    display: block;
   }
 
   .career__body {
-    margin-left: 0;
     padding-right: 36px;
   }
 }

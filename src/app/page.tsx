@@ -1,9 +1,10 @@
 import type { CSSProperties } from "react";
 import Link from "next/link";
+import { CareerTimeline } from "@/components/CareerTimeline";
 import { NetworkMap } from "@/components/NetworkMap";
-import { Roundel, SeparatedText, StripMap } from "@/components/transit";
+import { Roundel, StripMap } from "@/components/transit";
 import { lineById } from "@/content/network";
-import { EMAIL, GITHUB, LINKEDIN, experienceTimeline, owner } from "@/content/site";
+import { EMAIL, GITHUB, LINKEDIN, owner } from "@/content/site";
 import { notiflyPipeline, requestPath, services } from "@/content/systems";
 
 const photos = [
@@ -38,43 +39,7 @@ export default function Home() {
         <p className="section__lede">
           Company roles and freelance projects, from commerce and mobile apps to integrations and automated testing.
         </p>
-        <ol id="freelance" className="career" aria-label="Career timeline, most recent first">
-          {experienceTimeline.map((entry) => {
-            const company = "employer" in entry;
-            return (
-              <li
-                key={company ? entry.slug : entry.id}
-                id={company ? undefined : entry.id}
-                className="career__stop"
-                data-kind={company ? "company" : "freelance"}
-                style={{ "--line": company ? lineById(entry.line).color : "var(--ink-3)" } as CSSProperties}
-              >
-                <details className="career__entry">
-                  <summary className="career__summary">
-                    <span className="career__dates">{entry.dates}</span>
-                    <span className="career__info">
-                      <span className="career__name"><SeparatedText text={company ? entry.employer : entry.name} /></span>
-                      <span className="career__role">
-                        {company ? entry.role : entry.alongside ? `Freelance alongside ${entry.alongside}` : "Freelance"}
-                      </span>
-                      <span className="career__brief">{entry.summary}</span>
-                    </span>
-                    <span className="career__toggle" aria-hidden="true" />
-                  </summary>
-                  <div className="career__body">
-                    {company ? (
-                      <>
-                        <p className="work-location"><SeparatedText text={entry.location} /></p>
-                        {entry.promotion && <p>{entry.promotion}</p>}
-                        <Link className="text-link" href={`/work/${entry.slug}/`}>View experience</Link>
-                      </>
-                    ) : <p>{entry.detail}</p>}
-                  </div>
-                </details>
-              </li>
-            );
-          })}
-        </ol>
+        <CareerTimeline />
       </section>
 
       <section id="notifly" className="section feature" style={{ "--line": notifly.color } as CSSProperties}>
@@ -86,7 +51,7 @@ export default function Home() {
             peso until you confirm it.
           </p>
           <ul className="points">
-            <li><strong>Nothing to type.</strong> The ledger builds itself from notifications you already get.</li>
+            <li><strong>Nothing to type.</strong> The ledger builds itself from notifications you already get, or a screenshot you share.</li>
             <li><strong>You confirm everything.</strong> Drafts wait in Needs review and never touch your balance.</li>
             <li><strong>It never guesses.</strong> No amount found means no transaction.</li>
             <li><strong>It stays on your phone.</strong> Parsing runs on-device and offline, with no account.</li>
