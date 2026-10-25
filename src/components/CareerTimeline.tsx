@@ -23,7 +23,7 @@ type Span = { entry: Entry; lane: 0 | 1; color: string; start: number; end: numb
 type Track = { color: string; width: number } | null;
 type Row = {
   at: number;
-  kind: "year" | "card" | "start";
+  kind: "year" | "card" | "start" | "promotion";
   label: string;
   year: number;
   node: { lane: 0 | 1; type: "year" | "stop" | "interchange"; color: string };
@@ -83,6 +83,11 @@ function buildRows(now: Date) {
       span,
     }));
   }
+  for (const c of caseStudies) {
+    if (!c.promotedAt) continue;
+    const at = monthIndex(c.promotedAt);
+    rows.push(row(at, { kind: "promotion", label: MONTHS[at % 12], node: { lane: 0, type: "stop", color: lineById(c.line).color }, span: spans.find((s) => s.entry === c) }));
+  }
   const years: Row[] = [];
   for (let y = now.getFullYear(); y >= Math.floor(first / 12); y--) {
     years.push(row(Math.min(y * 12 + 11.5, nowIndex + 0.25), {
@@ -94,7 +99,9 @@ function buildRows(now: Date) {
   rows.sort((a, b) => b.at - a.at);
   return {
     current: rows.filter((r) => r.at === present),
-    years: years.map((header) => ({ header, events: rows.filter((r) => r.at !== present && r.year === header.year) })),
+    years: years
+      .map((header) => ({ header, events: rows.filter((r) => r.at !== present && r.year === header.year) }))
+      .filter(({ events }) => events.length),
   };
 }
 
@@ -176,9 +183,9 @@ function RowContent({ row }: { row: Row }) {
   else if (row.kind === "start" && row.span) {
     const { entry } = row.span;
     content = <p className="career__note">{isCompany(entry) ? "Joined" : "Started"} <SeparatedText text={entryName(entry)} /></p>;
-  } else if (row.kind === "year") {
-    const promoted = caseStudies.find((c) => c.promotedIn === row.year);
-    if (promoted) content = <p className="career__note">{promoted.employer}: {promoted.promotion}</p>;
+  } else if (row.kind === "promotion" && row.span) {
+    const { entry } = row.span;
+    content = <p className="career__note">{entryName(entry)}: {isCompany(entry) && entry.promotion}</p>;
   }
   return (
     <>

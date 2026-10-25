@@ -57,6 +57,7 @@ export default function Home() {
             <li><strong>It stays on your phone.</strong> Parsing runs on-device and offline, with no account.</li>
           </ul>
           <Link className="text-link" href="/notifly/">Read the Notifly build</Link>
+          <a className="text-link" href="https://notifly.bsumatra.dev/">Visit the Notifly website</a>
         </div>
         <div className="feature__diagram">
           <StripMap stops={notiflyPipeline} color={notifly.color} direction="v" label="How Notifly handles a notification" />

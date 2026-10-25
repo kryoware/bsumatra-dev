@@ -281,7 +281,6 @@ export function NetworkMap({ title }: { title: ReactNode }) {
                 <Link
                   href={line.href}
                   className="legend__row"
-                  data-dim={dimmed(line.id) || undefined}
                   onMouseEnter={() => setFocus({ line: line.id })}
                   onMouseLeave={clear}
                   onFocus={() => setFocus({ line: line.id })}

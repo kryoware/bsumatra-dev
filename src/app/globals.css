@@ -641,11 +641,6 @@ a {
   min-height: 44px;
   padding: 0.32em 0;
   text-decoration: none;
-  transition: opacity 0.3s var(--ease-out);
-}
-
-.legend__row[data-dim] {
-  opacity: 0.35;
 }
 
 /* Fine pointers get denser rows so the NDA line fits the first viewport on 720px-tall laptops. */
@@ -915,6 +910,10 @@ a {
   min-height: 144px;
 }
 
+.career__year:not(:has(.career__events)) {
+  min-height: 0;
+}
+
 .career__events {
   display: flex;
   flex-direction: column;
@@ -931,7 +930,7 @@ a {
 
 .career__row {
   display: grid;
-  grid-template-columns: 96px 72px minmax(0, 1fr);
+  grid-template-columns: 136px 72px minmax(0, 1fr);
   grid-template-areas: "time graph content";
 }
 
@@ -939,7 +938,8 @@ a {
   min-height: 72px;
 }
 
-.career__row[data-kind="start"] {
+.career__row[data-kind="start"],
+.career__row[data-kind="promotion"] {
   min-height: 80px;
 }
 
@@ -952,17 +952,14 @@ a {
   color: var(--ink-2);
 }
 
-.career__time--year {
+.career__time--year,
+.career__time--present {
+  white-space: nowrap;
   padding-top: 16px;
   font-size: 1.75rem;
   font-weight: 900;
   line-height: 1;
   letter-spacing: -0.02em;
-  color: var(--ink);
-}
-
-.career__time--present {
-  font-weight: 800;
   color: var(--ink);
 }
 
@@ -1150,7 +1147,8 @@ a {
     text-align: left;
   }
 
-  .career__time--year {
+  .career__time--year,
+  .career__time--present {
     padding-top: 18px;
     font-size: 1.5rem;
   }
@@ -1208,6 +1206,10 @@ a {
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
   gap: clamp(40px, 6vw, 96px);
   align-items: start;
+}
+
+.feature__copy .text-link + .text-link {
+  margin-left: 24px;
 }
 
 .feature__copy .roundel {
@@ -1667,6 +1669,7 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .map__train-route,
   .legend__motion {
     display: none;
   }

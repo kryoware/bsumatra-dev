@@ -28,7 +28,7 @@ export type CaseStudy = {
   role: string;
   roles?: Stop[];
   promotion?: string;
-  promotedIn?: number;
+  promotedAt?: YearMonth;
   stack: string[];
   summary: string;
   approach: { step: string; detail: string }[];
@@ -45,11 +45,11 @@ export const caseStudies: CaseStudy[] = [
     start: [2022, 6],
     end: null,
     role: "Senior Full Stack Software Engineer",
-    promotion: "Promoted from Mid to Senior in 2023.",
-    promotedIn: 2023,
+    promotion: "Promoted from Mid to Senior in Sep 2023.",
+    promotedAt: [2023, 9],
     roles: [
-      { name: "Mid Full Stack Software Engineer", note: "Jun 2022 – 2023" },
-      { name: "Senior Full Stack Software Engineer", note: "2023 – Present (promoted)" },
+      { name: "Mid Full Stack Software Engineer", note: "Jun 2022 – Sep 2023" },
+      { name: "Senior Full Stack Software Engineer", note: "Sep 2023 – Present (promoted)" },
     ],
     stack: ["React", "NestJS", "PHP", "Symfony", "TypeScript", "Cypress", "Jest", "Jenkins", "AWS", "Terraform"],
     summary: "Maintaining a microservices platform, connecting workforce systems and strengthening automated testing.",
