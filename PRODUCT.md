@@ -46,7 +46,7 @@ The owner covers both major frontend ecosystems (React/Next.js and Vue/Nuxt), th
 
 **Skill set (confirmed by owner):** React, Vue, NestJS, Next.js, Nuxt, PHP, MySQL, PostgreSQL, TypeScript; server and network administration (homelab).
 
-**Skill set (evidenced by Notifly source):** Kotlin, Android, Compose Multiplatform, Room/SQLCipher, Python (scikit-learn classifier training).
+**Skill set (evidenced by Notifly source):** Kotlin, Android, Compose Multiplatform, Room/SQLCipher, Python (classifier training).
 
 **NDA rules for client work:**
 - Never: client or employer names, code, screenshots of client systems, or internal details.
@@ -65,13 +65,13 @@ Not chosen: making the portfolio's own repo a proof piece. Whether the site repo
 - Services: Beszel (server monitoring), Dozzle (container logs), Immich (self-hosted photo library), n8n (workflow automation).
 - Network: TP-Link Omada managed setup; multi-WAN bonding with OpenMPTCProuter.
 
-**Notifly (hobby project, facts from its README):**
-- Tagline: "Every ping, checked." A personal finance tracker for Android that turns bank and e-wallet notifications into a ledger, and never counts a transaction until the user confirms it. Inspired by Samsung's Notistar.
-- Built-in parsing for GCash, Maya and BPI, plus a bundled on-device classifier for other apps. Parsed items wait in a *Needs review* queue and never move the confirmed balance until confirmed. Never guesses an amount.
-- Private by design: notification text is parsed on-device, offline, no account or server.
-- Also: ledger, accounts and transfer detection, budgets and bill reminders, insights, notification log, CSV import/export, app lock, four palettes in light/dark, phone and tablet layouts, accessibility (state never shown by colour alone, font scale, reduced motion).
-- Stack: Kotlin 2.4, Compose Multiplatform 1.13, Android 8.0+ (API 26), Room + SQLCipher, Koin, Glance widgets.
-- Classifier: character TF-IDF + logistic regression, int8-quantized, about 124 KB, Kotlin inference with no ML runtime. Prototype trained on synthetic examples plus 23 reviewed notifications; its test score does not establish real-world accuracy.
+**Notifly (hobby project, facts from its README, PRODUCT.md and docs/CLASSIFIER_MODEL.md; synced 2026-10-25 at v0.12.0):**
+- Tagline: "Every ping, checked." A personal finance tracker for Android that turns bank and e-wallet notifications into a ledger, and never counts a transaction until the user confirms it. Inspired by Samsung's Notistar (owner-confirmed; not in current Notifly docs).
+- On-device rules find amount and direction for any allow-listed app; release builds add a bundled on-device classifier. A guided catalog suggests GCash, Maya, BPI, BDO, UnionBank, Shopee, Lazada and Grab. Shared screenshots and receipts are OCR'd on-device into drafts. Notifications from apps that are not allow-listed are dropped and nothing is stored. Transfers between the user's own accounts are the one exception to review. Parsed items wait in a *Needs review* queue and never move the confirmed balance until confirmed. Never guesses an amount.
+- Private by design: notification text is parsed on-device, offline, no account or server. Privacy policy: https://notifly.bsumatra.dev/docs/PRIVACY/ (the README's /privacy link serves the landing page).
+- Also: ledger, accounts and transfer detection, budgets and bills, debts, savings goals, insights, opt-in reminders, home-screen widgets, notification log, CSV import/export, encrypted backup and restore, demo mode, app lock (PIN or biometrics), four palettes plus wallpaper colours in light/dark, phone, tablet and foldable layouts, accessibility (state never shown by colour alone, font scale, reduced motion).
+- Stack: Kotlin 2.4, Compose Multiplatform 1.13, Android 8.0+ (API 26), Room + SQLCipher, DataStore, Koin, Glance widgets, Tesseract4Android OCR, opt-in Sentry.
+- Classifier: character 3–5 gram TF-IDF + logistic regression, int8 weights, 122,777 bytes (about 123 KB, format v3, release 2026-10-20), Kotlin inference with no ML runtime. 0.8 threshold. Prototype trained on synthetic examples and a small manually verified sample; its threshold and held-out scores do not establish real-world accuracy. 82 regression cases.
 - Status: pre-release, not on the Play Store, cloud sync not configured. License AGPL-3.0. Repo currently private.
 
 **Security and privacy constraints:**

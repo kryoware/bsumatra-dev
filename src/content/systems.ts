@@ -2,8 +2,8 @@ import type { Stop } from "@/components/transit";
 
 export const notiflyPipeline: Stop[] = [
   { name: "Bank or e-wallet notification", note: "GCash, Maya, BPI and more" },
-  { name: "Allow-listed app?", branch: "No: ignored. Only the app and the reason are logged." },
-  { name: "On-device parser and classifier", branch: "No amount found: no transaction. It never guesses." },
+  { name: "Allow-listed app?", branch: "No: dropped. Nothing is stored." },
+  { name: "On-device rules and classifier", branch: "No amount found: no transaction. It never guesses." },
   { name: "Needs review", note: "A draft, kept apart from your balance" },
   { name: "Confirmed", note: "Only now does the balance move" },
 ];
@@ -11,7 +11,7 @@ export const notiflyPipeline: Stop[] = [
 export const notiflyStack: Stop[] = [
   { name: "Kotlin", note: "2.4" },
   { name: "Compose Multiplatform", note: "1.13" },
-  { name: "On-device classifier", note: "About 124 KB" },
+  { name: "On-device classifier", note: "About 123 KB" },
   { name: "Room + SQLCipher", note: "Encrypted ledger" },
 ];
 

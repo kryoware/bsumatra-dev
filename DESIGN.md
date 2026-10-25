@@ -88,6 +88,12 @@ typography:
     fontSize: "0.75rem"
     fontWeight: 800
     letterSpacing: "0.06em"
+  year-numeral:
+    fontFamily: "Overpass, system-ui, sans-serif"
+    fontSize: "1.75rem"
+    fontWeight: 900
+    lineHeight: 1
+    letterSpacing: "-0.02em"
   station-label:
     fontFamily: "Overpass, system-ui, sans-serif"
     fontSize: "15px"
@@ -327,11 +333,16 @@ An inline status mark for stand-in content: 2px dashed border in the current col
 Company city and remote status use regular-weight secondary ink without a border, background or chip padding. Locations appear inside expanded homepage career entries and in the existing work-page facts. Middle dots occupy a centered 1.4em inline box so the location and freelance-name separators retain visible spacing.
 
 ### Experience chronology
-One connected vertical homepage timeline combines company roles and all three freelance engagements, newest end date first. Each entry is a native details/summary disclosure, closed by default, showing its original dates, employer/client, role and a brief summary. Expanded company entries reveal location, promotion copy and a View experience link to the unchanged work page; expanded freelance entries reveal the original project description. There is no second freelance board or homepage technology strip.
+A git-graph timeline drawn in the map's track vocabulary, newest at top. The page builds it on the server from each entry's structured `start`/`end` months; the displayed `dates` strings stay as the original records. Present (ELMO) leads, then one group per calendar year down to 2017.
 
-The rail is 2px secondary ink, with 16px paper stations ringed in the company route color or secondary ink for freelance work. Typography carries the hierarchy: 1.25rem/800 employer names, 0.95rem secondary roles and 0.92rem dates. Dates occupy a 180px desktop column, with a 24px gap before the content; below 640px they move above each entry. Summaries have 20px vertical padding, and a simple plus/minus marks disclosure state. Native keyboard behavior and global focus rings apply; no new animation or client component is needed.
-
-Umá / iFarms (Jan–Mar 2021) sits between Yondu and Futuristech. The 2020 logistics and 2018–19 retail/queueing work explicitly say Freelance alongside Futuristech even while collapsed. Dates reference the original records and do not imply continuous freelance employment. The legacy #freelance anchor targets the unified timeline, and each freelance-* anchor targets its own visible row.
+- **Trunk (lane 0):** 8px track in the employer's route color, changing color at handoffs. Yondu to ELMO in Jun 2022 is an interchange: a 24px paper ring with a 4px ink border. Between employers the trunk thins to a 2px Pewter connector.
+- **Freelance (lane 1):** 6px Pewter branches, the strip-map spur convention, never dashed. Each branch leaves and rejoins the trunk through a 45° turnout with 18px circular arcs, matching the map. Retail and queueing (Dec 2018 – Feb 2019) and BAI (Jun – Jul 2020) branch off Futuristech orange. Umá / iFarms (Jan – Mar 2021) branches off the gap connector.
+- **Stations:** years are 32px paper rings with a 6px ink border, echoing the masthead mark, and their numerals are set at 1.75rem/900 (1.5rem below 640px). Months appear only at real start and end months, as 16px paper dots ringed 4px in the line color. The 2023 promotion sits on the year row with no month dot.
+- **Rows:** each entry's card sits at the top of its span (its end month), and a one-line "Joined…" or "Started…" note marks the start. Cards are native details/summary disclosures, closed by default, showing employer/client, role · dates and a brief summary. Expanded company cards reveal location, promotion copy and a View experience link; expanded freelance cards reveal the project description.
+- **Grid:** 96px time column (right-aligned months, year numerals), 72px graph column, then content. Below 640px the graph takes a 60px column and the time label stacks above the content.
+- **Reflow:** straight runs are stretchy absolutely positioned spans, so opening a card lengthens its lanes. Turnouts are fixed-size SVG anchored to the 30px node line.
+- **Spacing:** every year group is at least 144px tall (120px below 640px), so empty years space evenly. Years with entries grow to fit them, which means spacing is uniform only where content allows.
+- **Accessibility:** the graph is aria-hidden. Outer list items are years (or Present), with nested lists of events; month labels carry a screen-reader-only year. The legacy #freelance anchor targets the timeline, and each freelance-* anchor targets its card row. No motion.
 
 ### Career progression
 ELMO's expanded homepage entry says Promoted from Mid to Senior in 2023. Its work page retains separate Mid and Senior stations with their dates beneath a Career progression heading, plus the concise current-role fact. No promotion month is implied. Company work-page technology strips retain the five-item desktop row cap and vertical mobile layout.
