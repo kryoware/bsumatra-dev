@@ -54,7 +54,14 @@ No P0 findings. One P1 and three P2 findings; all addressed in this pass.
 - The suspected invisible contact focus ring was rejected: rendered light-theme outline was paper against ink, supplied by the existing `.terminus a:focus-visible` rule.
 - The shared preview twice returned `Preview automation snapshot timed out after 15000ms.` Verification used the repository's existing Selenium/Zen workflow instead.
 
-The working tree already contained timeline/content edits, and further timeline refinements appeared during the pass. Those changes were preserved; the final export was rebuilt to include them. They are not attributed to this audit. Concurrent Notifly website links and their spacing arrived after that export; the 79-check result applies to the tested snapshot and does not verify those later additions.
+The working tree already contained timeline/content edits, and further timeline refinements appeared during the pass. Those changes were preserved; the final export was rebuilt to include them. They are not attributed to this audit. The original 79-check run excluded concurrent Notifly website link additions; the closure run below includes them.
+
+## Cavecrew closure verification
+
+- Cavecrew reviewer and investigator (`gpt-6-luna`, reasoning effort `medium`) confirmed all four findings are resolved, with no unresolved production issue.
+- Cavecrew builder added 12 browser assertions covering homepage and Notifly detail website links, accessible names, and detail-page overflow at 1440, 768, 390 and 320px.
+- On the current tree, `npm run build` passed, including TypeScript, static export and postbuild; `node --test scripts/network.test.mjs` passed **5/5**; and Zen 1.23.4b / Gecko 158 passed **91 browser checks** against the static export at `http://127.0.0.1:4176`. `git diff --check` passed.
+- Evidence: `.git/impeccable-af5b/final/results.json`. External destination uptime was not verified.
 
 ## Preserved strengths and remaining checks
 
