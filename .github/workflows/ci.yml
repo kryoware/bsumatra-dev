@@ -67,7 +67,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           wranglerVersion: 4
-          command: versions upload --preview-alias pr-${{ github.event.number }} --message "PR #${{ github.event.number }} ${{ github.event.pull_request.head.sha }}"
+          command: versions upload --preview-alias pr-${{ github.event.number }} --message pr-${{ github.event.number }}-${{ github.event.pull_request.head.sha }}
       - name: Comment preview URL
         uses: actions/github-script@v7
         env:
