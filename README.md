@@ -48,3 +48,11 @@ npx wrangler deploy
 First time on a machine: `npx wrangler login`.
 
 Keep `wrangler.jsonc` in the repo. Without it, `wrangler deploy` auto-configures the project for OpenNext (server-rendered Next.js), rewriting `package.json` and `next.config.ts`. If that happens, revert those changes with git.
+
+### Automatic deploys
+
+Deploys run through the Cloudflare Workers Builds Git integration (Workers & Pages, then `bsumatra-dev`, then Settings, then Builds). Pushes to `main` deploy to production. Other branches and PRs get preview URLs.
+
+- Build command: `npm run build`
+- Deploy command: `npx wrangler deploy`
+- Non-production branch deploy command: `npx wrangler preview` (needs the `previews` block in `wrangler.jsonc`)
