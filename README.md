@@ -55,4 +55,4 @@ Deploys run through the Cloudflare Workers Builds Git integration (Workers & Pag
 
 - Build command: `npm run build`
 - Deploy command: `npx wrangler deploy`
-- Non-production branch deploy command: `npx wrangler versions upload`
+- Non-production branch deploy command: `npx wrangler preview` (needs the `previews` block in `wrangler.jsonc`)

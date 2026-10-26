@@ -3,6 +3,7 @@
   "name": "bsumatra-dev",
   "compatibility_date": "2026-10-19",
   "workers_dev": true,
+  "previews": {},
   "routes": [
     { "pattern": "bsumatra.dev", "custom_domain": true },
     { "pattern": "www.bsumatra.dev", "custom_domain": true }
